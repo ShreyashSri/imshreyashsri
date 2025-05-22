@@ -382,7 +382,7 @@ export default function Home() {
               <span className="font-medium">GitHub</span>
             </Link>
             <Link
-              href="https://linkedin.com/in/Shreyash"
+              href="https://linkedin.com/in/shreyashsri"
               target="_blank"
               rel="noopener noreferrer"
               className="flex flex-col items-center justify-center rounded-lg border border-border bg-card p-6 text-center transition-all hover:border-primary hover:shadow-md"
@@ -391,7 +391,7 @@ export default function Home() {
               <span className="font-medium">LinkedIn</span>
             </Link>
             <Link
-              href="https://twitter.com/yourusername"
+              href="https://twitter.com/imshreyashsri"
               target="_blank"
               rel="noopener noreferrer"
               className="flex flex-col items-center justify-center rounded-lg border border-border bg-card p-6 text-center transition-all hover:border-primary hover:shadow-md"
@@ -498,11 +498,11 @@ export default function Home() {
                 <Github className="h-5 w-5 text-muted-foreground transition-colors hover:text-foreground" />
                 <span className="sr-only">GitHub</span>
               </Link>
-              <Link href="https://linkedin.com/in/Shreyash" target="_blank" rel="noopener noreferrer">
+              <Link href="https://linkedin.com/in/shreyashsri" target="_blank" rel="noopener noreferrer">
                 <Linkedin className="h-5 w-5 text-muted-foreground transition-colors hover:text-foreground" />
                 <span className="sr-only">LinkedIn</span>
               </Link>
-              <Link href="https://twitter.com/yourusername" target="_blank" rel="noopener noreferrer">
+              <Link href="https://twitter.com/imshreyashsri" target="_blank" rel="noopener noreferrer">
                 <Twitter className="h-5 w-5 text-muted-foreground transition-colors hover:text-foreground" />
                 <span className="sr-only">Twitter</span>
               </Link>
