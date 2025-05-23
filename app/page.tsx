@@ -163,7 +163,7 @@ export default function Home() {
                 <div className="space-y-2">
                   <div className="flex items-center justify-between">
                     <span>CodeChef</span>
-                    <Badge variant="outline">2★ (1413)</Badge>
+                    <Badge variant="outline">2★ (1415)</Badge>
                   </div>
                   <div className="flex items-center justify-between">
                     <span>CodeForces</span>
