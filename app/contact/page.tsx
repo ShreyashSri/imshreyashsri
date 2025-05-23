@@ -21,7 +21,7 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <CardTitle className="text-base">Email</CardTitle>
-                  <CardDescription>your.email@example.com</CardDescription>
+                  <CardDescription>shreyash.sri09@gmail.com</CardDescription>
                 </div>
               </CardContent>
             </Card>
@@ -43,7 +43,7 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <CardTitle className="text-base">Phone</CardTitle>
-                  <CardDescription>+91 XXXXXXXXXX</CardDescription>
+                  <CardDescription>+91 9305115681</CardDescription>
                 </div>
               </CardContent>
             </Card>

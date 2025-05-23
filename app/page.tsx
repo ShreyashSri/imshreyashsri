@@ -6,6 +6,8 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Badge } from "@/components/ui/badge"
 import AnimatedText from "@/components/animated-text"
 import { Metadata } from "next"
+import { projects } from "@/data/projects"
+import { blogPosts } from "@/data/blog-posts"
 
 export const metadata: Metadata = {
   title: "Shreyash Srivastava - Portfolio",
@@ -513,48 +515,3 @@ export default function Home() {
     </div>
   )
 }
-
-// Sample data - replace with your actual data
-const projects = [
-  {
-    title: "LiquidPay",
-    description: "All-in-one banking and finance dashboard",
-    image: "/images/liquidpay.jpeg",
-    technologies: ["Next.js", "React", "JavaScript", "TensorFlow", "Gemini API"],
-    demo: "https://liquidpay.vercel.app",
-    github: "https://github.com/ShreyashSri/liquidPay",
-  },
-  {
-    title: "Career Portal",
-    description: "Centralized opportunity board for students",
-    image: "/images/career-portal.jpeg",
-    technologies: ["Flask", "HTML", "CSS", "MongoDB"],
-    demo: "https://career-portal-37i9.onrender.com",
-    github: "https://github.com/ShreyashSri/career-portal",
-  },
-  {
-    title: "VendIN",
-    description: "Vendor discovery and visibility platform",
-    image: "/images/vendin.jpeg",
-    technologies: ["Django", "HTML", "CSS", "JavaScript"],
-    demo: "https://vendin.onrender.com",
-    github: "https://github.com/ShreyashSri/VendIn",
-  },
-]
-
-const blogPosts = [
-  {
-    title: "Swagger: What's That?",
-    excerpt: "Learn about Swagger documentation and its importance in API development.",
-    image: "/images/swagger.webp",
-    date: "March 18, 2025",
-    url: "https://medium.com/@ShreyashSri/swagger-whats-that-2377ba6d8e17",
-  },
-  {
-    title: "My Experience Participating in KWoC",
-    excerpt: "A reflection on my journey participating in Kharagpur Winter of Code.",
-    image: "/images/kwoc.webp",
-    date: "January 18, 2025",
-    url: "https://medium.com/@ShreyashSri/my-experience-participating-in-kwoc-b87d197d4728",
-  },
-]

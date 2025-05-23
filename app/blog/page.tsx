@@ -4,6 +4,7 @@ import { ExternalLink, Calendar } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import { blogPosts } from "@/data/blog-posts"
 
 export default function BlogPage() {
   return (
@@ -48,47 +49,3 @@ export default function BlogPage() {
     </div>
   )
 }
-
-// Sample data - replace with your actual blog posts from dev.to
-const blogPosts = [
-  {
-    title: "How to Build a RESTful API with Node.js and Express",
-    excerpt:
-      "Learn how to create a robust RESTful API using Node.js and Express framework with proper error handling and validation. This comprehensive guide covers everything from setting up your project to deploying your API to production.",
-    image: "/placeholder.svg?height=400&width=600",
-    date: "May 15, 2025",
-    url: "https://dev.to/yourusername/how-to-build-a-restful-api-with-nodejs-and-express",
-  },
-  {
-    title: "Understanding React Hooks: A Comprehensive Guide",
-    excerpt:
-      "Dive deep into React Hooks and learn how to use useState, useEffect, useContext, and custom hooks effectively in your applications. This article explains the concepts with practical examples and best practices.",
-    image: "/placeholder.svg?height=400&width=600",
-    date: "April 22, 2025",
-    url: "https://dev.to/yourusername/understanding-react-hooks-a-comprehensive-guide",
-  },
-  {
-    title: "Getting Started with TypeScript in 2025",
-    excerpt:
-      "A beginner-friendly introduction to TypeScript, covering basic types, interfaces, and how to set up a new project with TypeScript. Learn how TypeScript can improve your development workflow and catch errors before runtime.",
-    image: "/placeholder.svg?height=400&width=600",
-    date: "March 10, 2025",
-    url: "https://dev.to/yourusername/getting-started-with-typescript-in-2025",
-  },
-  {
-    title: "Building Accessible Web Applications: A Developer's Guide",
-    excerpt:
-      "Learn how to make your web applications accessible to all users, including those with disabilities. This guide covers ARIA attributes, keyboard navigation, color contrast, and testing tools to ensure your applications meet accessibility standards.",
-    image: "/placeholder.svg?height=400&width=600",
-    date: "February 5, 2025",
-    url: "https://dev.to/yourusername/building-accessible-web-applications-a-developers-guide",
-  },
-  {
-    title: "Optimizing React Performance: Tips and Tricks",
-    excerpt:
-      "Discover practical techniques to improve the performance of your React applications. This article covers memoization, code splitting, virtualization, and other optimization strategies to make your React apps faster and more efficient.",
-    image: "/placeholder.svg?height=400&width=600",
-    date: "January 18, 2025",
-    url: "https://dev.to/yourusername/optimizing-react-performance-tips-and-tricks",
-  },
-]
