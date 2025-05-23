@@ -25,6 +25,7 @@ export default function Header() {
     { href: "/#projects", label: "Projects", icon: Code },
     { href: "/#about", label: "About", icon: User },
     { href: "/#contact", label: "Contact", icon: Mail },
+    { href: "/Shreyash_Resume.pdf", label: "Resume", icon: FileText, target: "_blank" },
   ]
 
   const navLinks = [
@@ -41,8 +42,8 @@ export default function Header() {
       <header
         className={`fixed top-0 z-50 w-full transition-all duration-300 ${
           isScrolled 
-            ? "bg-background/80 backdrop-blur-md shadow-sm" 
-            : "bg-black/30 backdrop-blur-sm"
+            ? "bg-zinc-900/80 backdrop-blur-md shadow-sm text-white" 
+            : "bg-zinc-900/30 backdrop-blur-sm text-white"
         }`}
       >
         <div className="container flex h-16 items-center justify-between">
@@ -62,7 +63,7 @@ export default function Header() {
                 {link.label}
               </Link>
             ))}
-            <Button asChild variant="outline" size="sm" className="ml-2">
+            <Button asChild variant="outline" size="sm" className="ml-2 bg-white text-black hover:bg-gray-100 border-gray-200">
               <Link href="/Shreyash_Resume.pdf" target="_blank" rel="noopener noreferrer">
                 <FileText className="mr-2 h-4 w-4" /> Resume
               </Link>
@@ -89,6 +90,8 @@ export default function Header() {
                   className={`flex flex-col items-center justify-center w-full h-full space-y-1 text-sm font-medium transition-colors hover:text-primary ${
                     pathname === item.href ? "text-primary" : "text-muted-foreground"
                   }`}
+                  target={item.target}
+                  rel={item.target === "_blank" ? "noopener noreferrer" : undefined}
                 >
                   <Icon className="h-5 w-5" />
                   <span className="text-xs">{item.label}</span>
