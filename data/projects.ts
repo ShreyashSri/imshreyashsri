@@ -15,7 +15,7 @@ export const projects: Project[] = [
     longDescription: "A comprehensive banking and finance dashboard that provides users with powerful tools for managing their finances. Built with modern technologies including Next.js and integrated with TensorFlow and Gemini API for advanced features.",
     image: "/images/liquidpay.jpeg",
     technologies: ["Next.js", "React", "JavaScript", "TensorFlow", "Gemini API"],
-    demo: "https://liquidpay.vercel.app",
+    demo: "/projects/liquidpay",
     github: "https://github.com/ShreyashSri/liquidPay",
   },
   {
