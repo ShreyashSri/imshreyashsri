@@ -112,11 +112,8 @@ export default function Home() {
               <CardContent>
                 <div className="flex flex-wrap gap-2">
                   <Badge>Python</Badge>
-                  <Badge>JavaScript</Badge>
+                  <Badge>Golang</Badge>
                   <Badge>TypeScript</Badge>
-                  <Badge>HTML</Badge>
-                  <Badge>CSS</Badge>
-                  <Badge>SQL</Badge>
                 </div>
               </CardContent>
             </Card>
@@ -129,7 +126,7 @@ export default function Home() {
               </CardHeader>
               <CardContent>
                 <div className="flex flex-wrap gap-2">
-                  <Badge>React</Badge>
+                  <Badge>Gin</Badge>
                   <Badge>Next.js</Badge>
                   <Badge>Flask</Badge>
                   <Badge>Django</Badge>
@@ -145,10 +142,12 @@ export default function Home() {
               </CardHeader>
               <CardContent>
                 <div className="flex flex-wrap gap-2">
-                  <Badge>Git/GitHub</Badge>
-                  <Badge>GitHub Actions</Badge>
+                  <Badge>Git</Badge>
+                  <Badge>CI/CD</Badge>
+                  <Badge>PostgreSQL</Badge>
                   <Badge>MongoDB</Badge>
-                  <Badge>MySQL</Badge>
+                  <Badge>Docker</Badge>
+                  <Badge>Monitoring Tools</Badge>
                 </div>
               </CardContent>
             </Card>
@@ -180,8 +179,66 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Experience Section */}
+      <section id="experience" className="bg-background py-16 md:py-24">
+        <div className="container">
+          <h2 className="text-center text-3xl font-bold tracking-tight sm:text-4xl mb-12">Experience</h2>
+          <div className="mx-auto max-w-4xl space-y-8">
+            <Card>
+              <CardHeader>
+                <div className="flex flex-col md:flex-row md:items-center justify-between gap-2">
+                  <div>
+                    <CardTitle className="text-xl">Backend Developer</CardTitle>
+                    <CardDescription className="text-base text-primary">Seeqlo (Remote)</CardDescription>
+                  </div>
+                  <Badge variant="outline" className="w-fit">Aug 2025 – Feb 2026</Badge>
+                </div>
+              </CardHeader>
+              <CardContent>
+                <ul className="list-disc pl-5 space-y-2 text-muted-foreground">
+                  <li>Integrated Stripe for secure payments and implemented a token-based credit system to control user access and resource consumption.</li>
+                  <li>Migrated a legacy backend from Express.js to Go (Gin) to enhance performance, and refactored a monolithic codebase into modular components to improve maintainability.</li>
+                  <li>Built a community administration interface enabling admins to monitor user activity and manage platform content.</li>
+                </ul>
+                <div className="mt-4 flex flex-wrap gap-2">
+                  <Badge variant="secondary">Go</Badge>
+                  <Badge variant="secondary">Gin</Badge>
+                  <Badge variant="secondary">Firebase</Badge>
+                  <Badge variant="secondary">Stripe</Badge>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <div className="flex flex-col md:flex-row md:items-center justify-between gap-2">
+                  <div>
+                    <CardTitle className="text-xl">Backend Developer</CardTitle>
+                    <CardDescription className="text-base text-primary">Ignito Co. (Remote)</CardDescription>
+                  </div>
+                  <Badge variant="outline" className="w-fit">July 2025 – Aug 2025</Badge>
+                </div>
+              </CardHeader>
+              <CardContent>
+                <ul className="list-disc pl-5 space-y-2 text-muted-foreground">
+                  <li>Built an inventory management system using Next.js and Supabase to ingest and process large Excel datasets, optimizing the pipeline to reduce processing time from 7 minutes to 16 seconds.</li>
+                  <li>Engineered a full-stack application using Go (Gin) and MongoDB to manage the end-to-end lifecycle of purchase orders, bills, and inventory tracking via scalable RESTful APIs.</li>
+                </ul>
+                <div className="mt-4 flex flex-wrap gap-2">
+                  <Badge variant="secondary">Go</Badge>
+                  <Badge variant="secondary">Gin</Badge>
+                  <Badge variant="secondary">Next.js</Badge>
+                  <Badge variant="secondary">MongoDB</Badge>
+                  <Badge variant="secondary">Supabase</Badge>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
       {/* Projects Section */}
-      <section id="projects" className="bg-background py-16 md:py-24">
+      <section id="projects" className="bg-muted py-16 md:py-24">
         <div className="container">
           <div className="mb-12 flex items-center justify-between">
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">My Projects</h2>
@@ -234,50 +291,108 @@ export default function Home() {
       </section>
 
       {/* Open Source Section */}
-      <section id="open-source" className="bg-muted py-16 md:py-24">
+      <section id="open-source" className="bg-background py-16 md:py-24">
         <div className="container">
           <h2 className="text-center text-3xl font-bold tracking-tight sm:text-4xl mb-12">Open Source Contributions</h2>
-          <div className="grid gap-8 md:grid-cols-2">
-            <Card>
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            <Card className="flex h-full flex-col">
               <CardHeader>
-                <CardTitle>Point Blank Website</CardTitle>
-                <CardDescription>Contributor (Dec 2024 - Present)</CardDescription>
+                <CardTitle>Debian - Salsa CI</CardTitle>
+                <CardDescription>Contributor</CardDescription>
               </CardHeader>
-              <CardContent>
-                <ul className="list-disc pl-5 space-y-2">
-                  <li>Added Swagger documentation for all API endpoints</li>
-                  <li>Resolved issues with image deletion and directory organization in object storage</li>
-                  <li>Fixed fetch issue using email-based search</li>
-                  <li>Enhanced the UI for event add and update forms</li>
-                  <li>Fixed build issue and labeller in GitHub Actions</li>
-                  <li>Implemented automated database backups using cron job</li>
+              <CardContent className="flex-grow">
+                <ul className="list-disc pl-5 space-y-2 text-muted-foreground text-sm">
+                  <li>Migrated the base-image build pipeline to use mmdebstrap and buildah, resolving rate-limiting errors.</li>
+                  <li>Added CI test case for the Debian Trixie release to validate build compatibility.</li>
+                  <li>Added instructions to run Salsa CI locally.</li>
                 </ul>
               </CardContent>
-              <CardFooter>
+              <CardFooter className="mt-auto pt-6">
                 <Button asChild variant="outline" size="sm">
-                  <Link href="https://github.com/pbdsce/PB_Website" target="_blank" rel="noopener noreferrer">
-                    <Github className="mr-2 h-4 w-4" /> View Contributions
+                  <Link href="https://salsa.debian.org/salsa-ci-team/pipeline" target="_blank" rel="noopener noreferrer">
+                    <Github className="mr-2 h-4 w-4" /> View Project
                   </Link>
                 </Button>
               </CardFooter>
             </Card>
 
-            <Card>
+            <Card className="flex h-full flex-col">
               <CardHeader>
-                <CardTitle>Eventica</CardTitle>
-                <CardDescription>Kharagpur Winter of Code (Nov 2024 - Feb 2025)</CardDescription>
+                <CardTitle>OpenTelemetry Operator</CardTitle>
+                <CardDescription>Contributor</CardDescription>
               </CardHeader>
-              <CardContent>
-                <ul className="list-disc pl-5 space-y-2">
-                  <li>Improved website responsiveness to be compatible across devices</li>
-                  <li>Implemented hamburger menu and resolved related UI issues</li>
-                  <li>Fixed inconsistencies in the theme-switching interface</li>
+              <CardContent className="flex-grow">
+                <ul className="list-disc pl-5 space-y-2 text-muted-foreground text-sm">
+                  <li>Implemented automated Markdown link validation using Linkspector with GitHub Actions.</li>
+                  <li>Deprecated the volumeSizeLimit field across instrumentations and added a validating webhook.</li>
                 </ul>
               </CardContent>
-              <CardFooter>
+              <CardFooter className="mt-auto pt-6">
                 <Button asChild variant="outline" size="sm">
-                  <Link href="https://github.com/Rakesh9100/Eventica" target="_blank" rel="noopener noreferrer">
-                    <Github className="mr-2 h-4 w-4" /> View Contributions
+                  <Link href="https://github.com/open-telemetry/opentelemetry-operator" target="_blank" rel="noopener noreferrer">
+                    <Github className="mr-2 h-4 w-4" /> View Project
+                  </Link>
+                </Button>
+              </CardFooter>
+            </Card>
+
+            <Card className="flex h-full flex-col">
+              <CardHeader>
+                <CardTitle>PointBlank</CardTitle>
+                <CardDescription>Member & Contributor (Dec 2024 - Present)</CardDescription>
+              </CardHeader>
+              <CardContent className="flex-grow">
+                <ul className="list-disc pl-5 space-y-2 text-muted-foreground text-sm">
+                  <li>Integrated Swagger documentation and resolved Cloudinary issues.</li>
+                  <li>Implemented Mailu mail server for emails.</li>
+                  <li>Implemented monitoring stack using Prometheus and Grafana.</li>
+                  <li>Migrated staging to Kubernetes and automated deployments via ArgoCD Apps of Apps.</li>
+                  <li>Added Dev container support to the website.</li>
+                </ul>
+              </CardContent>
+              <CardFooter className="mt-auto pt-6">
+                <Button asChild variant="outline" size="sm">
+                  <Link href="https://github.com/pointblank-club" target="_blank" rel="noopener noreferrer">
+                    <Github className="mr-2 h-4 w-4" /> View Project
+                  </Link>
+                </Button>
+              </CardFooter>
+            </Card>
+
+            <Card className="flex h-full flex-col">
+              <CardHeader>
+                <CardTitle>KWoC Backend</CardTitle>
+                <CardDescription>Backend & Observability Contributor</CardDescription>
+              </CardHeader>
+              <CardContent className="flex-grow">
+                <ul className="list-disc pl-5 space-y-2 text-muted-foreground text-sm">
+                  <li>Added a production-grade observability stack using Prometheus, Grafana, Node Exporter, and Alertmanager.</li>
+                  <li>Implemented automated alerts for server downtime and resource threshold breaches.</li>
+                </ul>
+              </CardContent>
+              <CardFooter className="mt-auto pt-6">
+                <Button asChild variant="outline" size="sm">
+                  <Link href="https://github.com/kossiitkgp/KWoC-Backend" target="_blank" rel="noopener noreferrer">
+                    <Github className="mr-2 h-4 w-4" /> View Project
+                  </Link>
+                </Button>
+              </CardFooter>
+            </Card>
+
+            <Card className="flex h-full flex-col">
+              <CardHeader>
+                <CardTitle>mwoffliner</CardTitle>
+                <CardDescription>Contributor</CardDescription>
+              </CardHeader>
+              <CardContent className="flex-grow">
+                <ul className="list-disc pl-5 space-y-2 text-muted-foreground text-sm">
+                  <li>Implemented CI checks for translations to ensure robustness.</li>
+                </ul>
+              </CardContent>
+              <CardFooter className="mt-auto pt-6">
+                <Button asChild variant="outline" size="sm">
+                  <Link href="https://github.com/openzim/mwoffliner" target="_blank" rel="noopener noreferrer">
+                    <Github className="mr-2 h-4 w-4" /> View Project
                   </Link>
                 </Button>
               </CardFooter>
@@ -287,13 +402,34 @@ export default function Home() {
       </section>
 
       {/* Achievements Section */}
-      <section id="achievements" className="bg-background py-16 md:py-24">
+      <section id="achievements" className="bg-muted py-16 md:py-24">
         <div className="container">
           <h2 className="text-center text-3xl font-bold tracking-tight sm:text-4xl mb-12">Achievements</h2>
           <div className="mx-auto max-w-3xl">
             <Card>
               <CardContent className="p-6">
                 <ul className="space-y-4">
+                  <li className="flex items-start">
+                    <Award className="mr-3 h-6 w-6 flex-shrink-0 text-primary" />
+                    <div>
+                      <p className="font-medium">Won Xythera CTF</p>
+                      <p className="text-sm text-muted-foreground">AWS Student Builder Group</p>
+                    </div>
+                  </li>
+                  <li className="flex items-start">
+                    <Award className="mr-3 h-6 w-6 flex-shrink-0 text-primary" />
+                    <div>
+                      <p className="font-medium">Won Unique Idea award at Hack-Nocturne ’26</p>
+                      <p className="text-sm text-muted-foreground">SMVIT – March 2026</p>
+                    </div>
+                  </li>
+                  <li className="flex items-start">
+                    <Award className="mr-3 h-6 w-6 flex-shrink-0 text-primary" />
+                    <div>
+                      <p className="font-medium">Recipient of the LiFT Scholarship</p>
+                      <p className="text-sm text-muted-foreground">The Linux Foundation – June 2025</p>
+                    </div>
+                  </li>
                   <li className="flex items-start">
                     <Award className="mr-3 h-6 w-6 flex-shrink-0 text-primary" />
                     <div>
@@ -328,7 +464,7 @@ export default function Home() {
       </section>
 
       {/* Blog Section */}
-      <section id="blog" className="bg-muted py-16 md:py-24">
+      <section id="blog" className="bg-background py-16 md:py-24">
         <div className="container">
           <div className="mb-12 flex items-center justify-between">
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Latest Articles</h2>
@@ -370,7 +506,7 @@ export default function Home() {
       </section>
 
       {/* Social Profiles Section */}
-      <section id="profiles" className="bg-background py-16 md:py-24">
+      <section id="profiles" className="bg-muted py-16 md:py-24">
         <div className="container">
           <h2 className="text-center text-3xl font-bold tracking-tight sm:text-4xl mb-12">Connect With Me</h2>
           <div className="mx-auto grid max-w-4xl grid-cols-2 gap-8 md:grid-cols-3 lg:grid-cols-5">
@@ -426,7 +562,7 @@ export default function Home() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="bg-muted py-16 md:py-24">
+      <section id="contact" className="bg-background py-16 md:py-24">
         <div className="container">
           <div className="mx-auto max-w-3xl">
             <h2 className="text-center text-3xl font-bold tracking-tight sm:text-4xl mb-12">Get In Touch</h2>
