@@ -4,48 +4,68 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 240 10% 3.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 240 10% 3.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 240 10% 3.9%;
-    --primary: 221.2 83.2% 53.3%;
-    --primary-foreground: 210 40% 98%;
-    --secondary: 240 4.8% 95.9%;
-    --secondary-foreground: 240 5.9% 10%;
-    --muted: 240 4.8% 95.9%;
-    --muted-foreground: 240 3.8% 46.1%;
-    --accent: 240 4.8% 95.9%;
-    --accent-foreground: 240 5.9% 10%;
-    --destructive: 0 84.2% 60.2%;
+    --background: 222 38% 8%;
+    --foreground: 44 32% 91%;
+    --card: 221 34% 11%;
+    --card-foreground: 44 32% 91%;
+    --popover: 221 34% 10%;
+    --popover-foreground: 44 32% 91%;
+    --primary: 355 100% 64%;
+    --primary-foreground: 222 38% 8%;
+    --secondary: 185 84% 38%;
+    --secondary-foreground: 44 32% 91%;
+    --muted: 219 22% 17%;
+    --muted-foreground: 42 16% 67%;
+    --accent: 43 94% 58%;
+    --accent-foreground: 222 38% 8%;
+    --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 98%;
-    --border: 240 5.9% 90%;
-    --input: 240 5.9% 90%;
-    --ring: 221.2 83.2% 53.3%;
-    --radius: 0.5rem;
+    --border: 219 22% 24%;
+    --input: 219 22% 24%;
+    --ring: 355 100% 64%;
+    --radius: 0.125rem;
+  }
+
+  .light {
+    --background: 42 35% 90%;
+    --foreground: 222 36% 10%;
+    --card: 42 28% 94%;
+    --card-foreground: 222 36% 10%;
+    --popover: 42 28% 94%;
+    --popover-foreground: 222 36% 10%;
+    --primary: 355 100% 56%;
+    --primary-foreground: 42 35% 94%;
+    --secondary: 188 72% 32%;
+    --secondary-foreground: 42 35% 94%;
+    --muted: 40 18% 82%;
+    --muted-foreground: 222 12% 33%;
+    --accent: 42 89% 47%;
+    --accent-foreground: 222 36% 10%;
+    --border: 222 13% 22%;
+    --input: 222 13% 22%;
+    --ring: 355 100% 56%;
   }
 
   .dark {
-    --background: 240 10% 3.9%;
-    --foreground: 0 0% 98%;
-    --card: 240 10% 3.9%;
-    --card-foreground: 0 0% 98%;
-    --popover: 240 10% 3.9%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 217.2 91.2% 59.8%;
-    --primary-foreground: 210 40% 98%;
-    --secondary: 240 3.7% 15.9%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 240 3.7% 15.9%;
-    --muted-foreground: 240 5% 64.9%;
-    --accent: 240 3.7% 15.9%;
-    --accent-foreground: 0 0% 98%;
-    --destructive: 0 62.8% 30.6%;
+    --background: 222 38% 8%;
+    --foreground: 44 32% 91%;
+    --card: 221 34% 11%;
+    --card-foreground: 44 32% 91%;
+    --popover: 221 34% 10%;
+    --popover-foreground: 44 32% 91%;
+    --primary: 355 100% 64%;
+    --primary-foreground: 222 38% 8%;
+    --secondary: 185 84% 38%;
+    --secondary-foreground: 44 32% 91%;
+    --muted: 219 22% 17%;
+    --muted-foreground: 42 16% 67%;
+    --accent: 43 94% 58%;
+    --accent-foreground: 222 38% 8%;
+    --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 98%;
-    --border: 240 3.7% 15.9%;
-    --input: 240 3.7% 15.9%;
-    --ring: 217.2 91.2% 59.8%;
+    --border: 219 22% 24%;
+    --input: 219 22% 24%;
+    --ring: 355 100% 64%;
   }
 }
 
@@ -53,10 +73,236 @@
   * {
     @apply border-border;
   }
-  body {
-    @apply bg-background text-foreground;
-  }
+
   html {
     scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Inter", "Segoe UI", Arial, sans-serif;
+    letter-spacing: 0;
+  }
+
+  ::selection {
+    background: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+  }
+}
+
+@layer components {
+  .font-display {
+    font-family: "Arial Narrow", "Roboto Condensed", "Agency FB", Impact, sans-serif;
+    letter-spacing: 0;
+  }
+
+  .valorant-shell {
+    position: relative;
+    min-height: 100vh;
+    overflow-x: hidden;
+    background:
+      linear-gradient(118deg, hsl(var(--primary) / 0.16) 0 8%, transparent 8% 58%, hsl(var(--secondary) / 0.12) 58% 64%, transparent 64%),
+      linear-gradient(154deg, transparent 0 72%, hsl(var(--accent) / 0.11) 72% 78%, transparent 78%),
+      linear-gradient(135deg, hsl(var(--background)), #101923 52%, #080b0f);
+  }
+
+  .valorant-shell::before {
+    content: "";
+    pointer-events: none;
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    background:
+      linear-gradient(hsl(var(--foreground) / 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--foreground) / 0.03) 1px, transparent 1px);
+    background-size: 100% 3px, 72px 72px;
+    mix-blend-mode: screen;
+    opacity: 0.45;
+  }
+
+  .tactical-grid {
+    background-image:
+      linear-gradient(hsl(var(--primary) / 0.12) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--primary) / 0.08) 1px, transparent 1px);
+    background-size: 46px 46px;
+  }
+
+  .tactical-card {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid hsl(var(--border));
+    border-radius: 2px;
+    background:
+      linear-gradient(135deg, hsl(var(--card) / 0.96), hsl(var(--muted) / 0.86)),
+      linear-gradient(135deg, hsl(var(--primary) / 0.08), transparent 36%);
+    box-shadow: 0 22px 70px hsl(222 38% 4% / 0.34);
+    clip-path: polygon(0 0, calc(100% - 18px) 0, 100% 18px, 100% 100%, 18px 100%, 0 calc(100% - 18px));
+  }
+
+  .tactical-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 2px;
+    width: 44%;
+    background: hsl(var(--primary));
+    box-shadow: 0 0 24px hsl(var(--primary) / 0.7);
+  }
+
+  .tactical-card::after {
+    content: "";
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(115deg, transparent 42%, hsl(var(--foreground) / 0.08), transparent 48%);
+    transform: translateX(-120%);
+    transition: transform 650ms ease;
+  }
+
+  .tactical-card:hover::after {
+    transform: translateX(120%);
+  }
+
+  .tactical-panel {
+    border: 1px solid hsl(var(--border));
+    border-radius: 2px;
+    background: hsl(var(--background) / 0.68);
+    backdrop-filter: blur(14px);
+    clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 16px 100%, 0 calc(100% - 16px));
+  }
+
+  .btn-tactical {
+    position: relative;
+    border-radius: 2px;
+    font-family: "Arial Narrow", "Roboto Condensed", "Agency FB", Impact, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0;
+    clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
+  }
+
+  .tactical-badge {
+    border-radius: 2px;
+    font-family: "Arial Narrow", "Roboto Condensed", "Agency FB", Impact, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0;
+    clip-path: polygon(0 0, calc(100% - 7px) 0, 100% 7px, 100% 100%, 7px 100%, 0 calc(100% - 7px));
+  }
+
+  .hud-label {
+    @apply font-display text-xs font-bold uppercase text-primary;
+    letter-spacing: 0;
+  }
+
+  .section-kicker {
+    @apply hud-label mb-3 inline-flex items-center gap-2;
+  }
+
+  .section-kicker::before {
+    content: "";
+    display: inline-block;
+    height: 2px;
+    width: 34px;
+    background: hsl(var(--primary));
+    box-shadow: 0 0 18px hsl(var(--primary) / 0.65);
+  }
+
+  .valorant-heading {
+    @apply font-display font-black uppercase leading-none;
+    letter-spacing: 0;
+  }
+
+  .corner-cut {
+    clip-path: polygon(0 0, calc(100% - 22px) 0, 100% 22px, 100% 100%, 22px 100%, 0 calc(100% - 22px));
+  }
+
+  .valorant-input {
+    border: 1px solid hsl(var(--border));
+    border-radius: 2px;
+    background: hsl(var(--background) / 0.7);
+    color: hsl(var(--foreground));
+    outline: none;
+    transition: border-color 180ms ease, box-shadow 180ms ease, background 180ms ease;
+  }
+
+  .valorant-input:focus {
+    border-color: hsl(var(--primary));
+    box-shadow: 0 0 0 2px hsl(var(--primary) / 0.2);
+    background: hsl(var(--background) / 0.92);
+  }
+
+  .glitch-text {
+    position: relative;
+    display: inline-block;
+    text-shadow: 2px 0 hsl(var(--primary) / 0.42), -2px 0 hsl(var(--secondary) / 0.36);
+    animation: tactical-glitch 3.6s infinite steps(1, end);
+  }
+
+  .glitch-text::before,
+  .glitch-text::after {
+    content: attr(data-text);
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0;
+  }
+
+  .glitch-text::before {
+    color: hsl(var(--primary));
+    transform: translate(2px, -1px);
+  }
+
+  .glitch-text::after {
+    color: hsl(var(--secondary));
+    transform: translate(-2px, 1px);
+  }
+
+  .glitch-text:hover::before,
+  .glitch-text:hover::after {
+    opacity: 0.5;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@keyframes tactical-glitch {
+  0%,
+  88%,
+  100% {
+    transform: translate(0);
+    filter: none;
+  }
+  89% {
+    transform: translate(2px, -1px);
+    filter: contrast(1.4);
+  }
+  90% {
+    transform: translate(-2px, 1px);
+  }
+  91% {
+    transform: translate(0);
+  }
+}
+
+@keyframes tactical-sweep {
+  0% {
+    transform: translateX(-120%);
+  }
+  100% {
+    transform: translateX(120%);
+  }
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
   }
 }
