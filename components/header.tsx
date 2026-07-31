@@ -10,10 +10,25 @@ import { ModeToggle } from "@/components/mode-toggle"
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
+  const [activeSection, setActiveSection] = useState("")
   const pathname = usePathname()
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 10)
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 10)
+      
+      const sections = document.querySelectorAll("section[id]")
+      let currentSection = ""
+      
+      sections.forEach((section) => {
+        const sectionTop = (section as HTMLElement).offsetTop
+        if (window.scrollY >= sectionTop - 100) {
+          currentSection = section.getAttribute("id") || ""
+        }
+      })
+      
+      setActiveSection(currentSection)
+    }
 
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
@@ -28,39 +43,39 @@ export default function Header() {
   ]
 
   const navLinks = [
-    { href: "/", label: "Home" },
-    { href: "/#about", label: "About" },
-    { href: "/#skills", label: "Loadout" },
-    { href: "/#projects", label: "Missions" },
-    { href: "/#blog", label: "Intel" },
-    { href: "/#contact", label: "Comms" },
+    { href: "#", label: "Home" },
+    { href: "#about", label: "About" },
+    { href: "#skills", label: "Loadout" },
+    { href: "#experience", label: "Operations" },
+    { href: "#projects", label: "Intel" },
+    { href: "#contact", label: "Comms" },
   ]
 
   return (
     <>
       <header
-        className={`fixed top-0 z-50 w-full border-b transition-all duration-300 ${
+        className={`fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[98%] max-w-7xl rounded-full border transition-all duration-300 ${
           isScrolled
-            ? "border-primary/30 bg-background/90 shadow-[0_0_32px_hsl(var(--primary)/0.12)] backdrop-blur-xl"
-            : "border-foreground/10 bg-background/40 backdrop-blur-md"
+            ? "border-primary/30 bg-black/60 shadow-[0_0_32px_hsl(var(--primary)/0.12)] backdrop-blur-xl"
+            : "border-white/10 bg-black/40 backdrop-blur-md"
         }`}
       >
-        <div className="container flex h-16 items-center justify-between">
+        <div className="container flex h-14 items-center justify-between px-4 sm:px-6 max-w-full">
           <Link href="/" className="group flex items-center gap-3">
             <span className="flex h-9 w-9 items-center justify-center border border-primary bg-primary/15 text-primary shadow-[0_0_18px_hsl(var(--primary)/0.24)]">
               <Crosshair className="h-5 w-5" />
             </span>
-            <span className="font-display text-xl font-black uppercase text-foreground">
-              Shreyash<span className="text-primary">.SR</span>
+            <span className="font-display text-xl uppercase tracking-wider leading-none">
+              <span className="text-white">SHREYASH</span><span className="text-primary">SRI</span>
             </span>
           </Link>
 
           <nav className="hidden items-center gap-2 md:flex">
             {navLinks.map((link) => {
-              const isActive = pathname === link.href || (link.href === "/" && pathname === "/")
-
+              const sectionId = link.href.split('#')[1]
+              const isActive = (sectionId && activeSection === sectionId) || (!sectionId && activeSection === "")
               return (
-                <Link
+                <a
                   key={link.href}
                   href={link.href}
                   className={`px-3 py-2 font-display text-sm font-bold uppercase transition-colors ${
@@ -68,7 +83,7 @@ export default function Header() {
                   }`}
                 >
                   {link.label}
-                </Link>
+                </a>
               )
             })}
             <Button asChild variant="outline" size="sm" className="ml-2">
