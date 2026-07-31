@@ -25,6 +25,7 @@ import {
 import { Metadata } from "next"
 
 import AnimatedText from "@/components/animated-text"
+import FaultyTerminalWrapper from "@/components/FaultyTerminalWrapper"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
@@ -32,7 +33,7 @@ import { blogPosts } from "@/data/blog-posts"
 import { projects } from "@/data/projects"
 
 export const metadata: Metadata = {
-  title: "Shreyash Srivastava - Tactical Portfolio",
+  title: "Shreyash Srivastava - Portfolio",
   description: "Backend engineering, open source, and project portfolio for Shreyash Srivastava.",
 }
 
@@ -150,7 +151,41 @@ const socials = [
 export default function Home() {
   return (
     <div className="valorant-shell flex min-h-screen flex-col">
-      <section className="relative overflow-hidden border-b border-primary/20 pt-20">
+      {/* Landing Page Section */}
+      <section className="relative h-screen w-full flex flex-col items-center justify-center overflow-hidden border-b border-primary/20">
+        <div className="absolute inset-0 z-0">
+          <FaultyTerminalWrapper
+            scale={2.2}
+            gridMul={[2, 1]}
+            digitSize={1.2}
+            timeScale={0.5}
+            pause={false}
+            scanlineIntensity={0.2}
+            glitchAmount={0.2}
+            flickerAmount={0.2}
+            noiseAmp={0.2}
+            chromaticAberration={0}
+            dither={0}
+            curvature={0.1}
+            tint="#FF4655"
+            tint2="#ECE8E1"
+            mouseReact
+            mouseStrength={0.5}
+            pageLoadAnimation
+            brightness={0.8}
+          />
+        </div>
+        <div className="relative z-10 flex flex-col items-center justify-center mt-[-10vh] w-full max-w-4xl px-4">
+          <h1 className="w-full text-4xl sm:text-5xl md:text-6xl font-bold drop-shadow-2xl text-center text-white leading-tight" style={{ fontFamily: "Inter, sans-serif" }}>
+            What I cannot create, <br className="hidden sm:block" /> I do not understand.
+          </h1>
+          <div className="w-full mt-6 text-lg md:text-xl text-white/80 font-medium tracking-wide text-right drop-shadow-lg pr-4 sm:pr-8">
+            ~ Richard Feynman
+          </div>
+        </div>
+      </section>
+
+      <section className="relative overflow-hidden border-b border-primary/20">
         <div className="absolute inset-0 z-0">
           <Image
             src="/images/mountain-landscape.jpeg"
@@ -220,7 +255,7 @@ export default function Home() {
                   Agent Dossier
                 </div>
                 <div className="absolute bottom-4 left-4 right-4">
-                  <div className="font-display text-3xl font-black uppercase text-foreground">Shreyash.SR</div>
+                  <div className="font-display text-3xl font-black uppercase text-foreground">ShreyashSri</div>
                   <div className="mt-2 flex flex-wrap gap-2">
                     <Badge>Go</Badge>
                     <Badge variant="secondary">Next.js</Badge>
@@ -367,6 +402,50 @@ export default function Home() {
         </div>
       </section>
 
+
+      <section id="open-source" className="py-16 md:py-24">
+        <div className="container">
+          <div className="mb-10 flex flex-col justify-between gap-4 lg:flex-row lg:items-end">
+            <div>
+              <div className="section-kicker">Open Source</div>
+              <h2 className="valorant-heading text-4xl text-foreground sm:text-5xl">Community Fronts</h2>
+            </div>
+            <p className="max-w-2xl text-sm leading-7 text-muted-foreground">
+              Contributions across CI, observability, documentation, Kubernetes workflows, mail infra, and release
+              quality.
+            </p>
+          </div>
+
+          <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+            {contributions.map((item) => (
+              <Card key={item.title} className="flex h-full flex-col">
+                <CardHeader>
+                  <CardDescription>{item.role}</CardDescription>
+                  <CardTitle>{item.title}</CardTitle>
+                </CardHeader>
+                <CardContent className="flex-grow">
+                  <ul className="space-y-3 text-sm leading-7 text-muted-foreground">
+                    {item.points.map((point) => (
+                      <li key={point} className="flex gap-3">
+                        <Radio className="mt-1 h-4 w-4 shrink-0 text-primary" />
+                        <span>{point}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </CardContent>
+                <CardFooter>
+                  <Button asChild variant="outline" size="sm">
+                    <Link href={item.href} target="_blank" rel="noopener noreferrer">
+                      Open Repo <Github className="h-4 w-4" />
+                    </Link>
+                  </Button>
+                </CardFooter>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section id="projects" className="relative border-y border-border bg-background/60 py-16 md:py-24">
         <div className="container">
           <div className="mb-10 flex flex-col justify-between gap-4 md:flex-row md:items-end">
@@ -432,49 +511,6 @@ export default function Home() {
                 </Card>
               )
             })}
-          </div>
-        </div>
-      </section>
-
-      <section id="open-source" className="py-16 md:py-24">
-        <div className="container">
-          <div className="mb-10 flex flex-col justify-between gap-4 lg:flex-row lg:items-end">
-            <div>
-              <div className="section-kicker">Open Source</div>
-              <h2 className="valorant-heading text-4xl text-foreground sm:text-5xl">Community Fronts</h2>
-            </div>
-            <p className="max-w-2xl text-sm leading-7 text-muted-foreground">
-              Contributions across CI, observability, documentation, Kubernetes workflows, mail infra, and release
-              quality.
-            </p>
-          </div>
-
-          <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-            {contributions.map((item) => (
-              <Card key={item.title} className="flex h-full flex-col">
-                <CardHeader>
-                  <CardDescription>{item.role}</CardDescription>
-                  <CardTitle>{item.title}</CardTitle>
-                </CardHeader>
-                <CardContent className="flex-grow">
-                  <ul className="space-y-3 text-sm leading-7 text-muted-foreground">
-                    {item.points.map((point) => (
-                      <li key={point} className="flex gap-3">
-                        <Radio className="mt-1 h-4 w-4 shrink-0 text-primary" />
-                        <span>{point}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </CardContent>
-                <CardFooter>
-                  <Button asChild variant="outline" size="sm">
-                    <Link href={item.href} target="_blank" rel="noopener noreferrer">
-                      Open Repo <Github className="h-4 w-4" />
-                    </Link>
-                  </Button>
-                </CardFooter>
-              </Card>
-            ))}
           </div>
         </div>
       </section>
