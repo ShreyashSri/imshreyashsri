@@ -1,20 +1,19 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useEffect, useState } from "react"
 import Link from "next/link"
-import { Home, User, Code, Mail, FileText } from "lucide-react"
+import { Code, Crosshair, FileText, Home, Mail, User } from "lucide-react"
+import { usePathname } from "next/navigation"
+
 import { Button } from "@/components/ui/button"
 import { ModeToggle } from "@/components/mode-toggle"
-import { usePathname } from "next/navigation"
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
   const pathname = usePathname()
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10)
-    }
+    const handleScroll = () => setIsScrolled(window.scrollY > 10)
 
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
@@ -31,41 +30,50 @@ export default function Header() {
   const navLinks = [
     { href: "/", label: "Home" },
     { href: "/#about", label: "About" },
-    { href: "/#skills", label: "Skills" },
-    { href: "/#projects", label: "Projects" },
-    { href: "/#blog", label: "Blog" },
-    { href: "/#contact", label: "Contact" },
+    { href: "/#skills", label: "Loadout" },
+    { href: "/#projects", label: "Missions" },
+    { href: "/#blog", label: "Intel" },
+    { href: "/#contact", label: "Comms" },
   ]
 
   return (
     <>
       <header
-        className={`fixed top-0 z-50 w-full transition-all duration-300 ${
-          isScrolled 
-            ? "bg-zinc-900/80 backdrop-blur-md shadow-sm text-white" 
-            : "bg-zinc-900/30 backdrop-blur-sm text-white"
+        className={`fixed top-0 z-50 w-full border-b transition-all duration-300 ${
+          isScrolled
+            ? "border-primary/30 bg-background/90 shadow-[0_0_32px_hsl(var(--primary)/0.12)] backdrop-blur-xl"
+            : "border-foreground/10 bg-background/40 backdrop-blur-md"
         }`}
       >
         <div className="container flex h-16 items-center justify-between">
-          <Link href="/" className="text-xl font-bold text-white">
-            <span className="text-primary">Shreyash</span> Srivastava
+          <Link href="/" className="group flex items-center gap-3">
+            <span className="flex h-9 w-9 items-center justify-center border border-primary bg-primary/15 text-primary shadow-[0_0_18px_hsl(var(--primary)/0.24)]">
+              <Crosshair className="h-5 w-5" />
+            </span>
+            <span className="font-display text-xl font-black uppercase text-foreground">
+              Shreyash<span className="text-primary">.SR</span>
+            </span>
           </Link>
 
-          <nav className="hidden md:flex items-center gap-6">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={`text-sm font-medium transition-colors hover:text-primary ${
-                  pathname === link.href ? "text-primary" : "text-foreground"
-                }`}
-              >
-                {link.label}
-              </Link>
-            ))}
-            <Button asChild variant="outline" size="sm" className="ml-2 bg-white text-black hover:bg-gray-100 border-gray-200">
+          <nav className="hidden items-center gap-2 md:flex">
+            {navLinks.map((link) => {
+              const isActive = pathname === link.href || (link.href === "/" && pathname === "/")
+
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={`px-3 py-2 font-display text-sm font-bold uppercase transition-colors ${
+                    isActive ? "text-primary" : "text-muted-foreground hover:text-foreground"
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              )
+            })}
+            <Button asChild variant="outline" size="sm" className="ml-2">
               <Link href="/Shreyash_Resume.pdf" target="_blank" rel="noopener noreferrer">
-                <FileText className="mr-2 h-4 w-4" /> Resume
+                <FileText className="h-4 w-4" /> Resume
               </Link>
             </Button>
             <ModeToggle />
@@ -77,24 +85,25 @@ export default function Header() {
         </div>
       </header>
 
-      {/* Mobile Bottom Navigation */}
-      <div className="md:hidden fixed bottom-0 left-0 right-0 z-50">
-        <nav className="bg-background/95 backdrop-blur-sm border-t border-border">
-          <div className="flex items-center justify-around h-16">
+      <div className="fixed bottom-0 left-0 right-0 z-50 md:hidden">
+        <nav className="border-t border-primary/25 bg-background/95 shadow-[0_-16px_40px_hsl(var(--background)/0.55)] backdrop-blur-xl">
+          <div className="grid h-16 grid-cols-5">
             {mobileNavItems.map((item) => {
               const Icon = item.icon
+              const isActive = pathname === item.href || (item.href === "/" && pathname === "/")
+
               return (
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`flex flex-col items-center justify-center w-full h-full space-y-1 text-sm font-medium transition-colors hover:text-primary ${
-                    pathname === item.href ? "text-primary" : "text-muted-foreground"
+                  className={`flex h-full flex-col items-center justify-center gap-1 font-display text-xs font-bold uppercase transition-colors ${
+                    isActive ? "text-primary" : "text-muted-foreground hover:text-foreground"
                   }`}
                   target={item.target}
                   rel={item.target === "_blank" ? "noopener noreferrer" : undefined}
                 >
                   <Icon className="h-5 w-5" />
-                  <span className="text-xs">{item.label}</span>
+                  <span>{item.label}</span>
                 </Link>
               )
             })}

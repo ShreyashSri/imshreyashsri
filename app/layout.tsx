@@ -1,16 +1,13 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Inter } from "next/font/google"
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import Header from "@/components/header"
 
-const inter = Inter({ subsets: ["latin"] })
-
 export const metadata: Metadata = {
-  title: "Your Name - Portfolio",
-  description: "Personal portfolio showcasing projects, blogs, and more",
-    generator: 'v0.dev'
+  title: "Shreyash Srivastava - Tactical Portfolio",
+  description: "Backend engineering, open source, and project portfolio for Shreyash Srivastava.",
+  generator: "v0.dev",
 }
 
 export default function RootLayout({
@@ -20,8 +17,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={inter.className}>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+      <body>
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
           <Header />
           <main>{children}</main>
         </ThemeProvider>
