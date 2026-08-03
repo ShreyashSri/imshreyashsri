@@ -4,10 +4,10 @@ import { useEffect, useState } from "react"
 
 const phrases = [
   "BACKEND DEVELOPER",
-  "OPEN SOURCE OPERATOR",
+  "OPEN SOURCE CONTRIBUTOR",
   "INFRA BUILDER",
-  "COMPETITIVE PROGRAMMER",
-  "GO + NEXT.JS SPECIALIST",
+  "DEVOPS ENGINEER",
+  "CERTIFIED KUBERNETES APPLICATION DEVELOPER",
 ]
 
 export default function AnimatedText() {
