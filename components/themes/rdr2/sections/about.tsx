@@ -20,7 +20,7 @@ function SelfPoster() {
             alt="Photograph of Shreyash Srivastava"
             fill
             sizes="240px"
-            priority
+            preload
             className="object-cover object-top filter-[grayscale(1)_sepia(0.65)_contrast(1.08)_brightness(1.02)]"
           />
           <div className="absolute inset-0 shadow-[inset_0_0_36px_rgba(60,35,10,0.6)]" />

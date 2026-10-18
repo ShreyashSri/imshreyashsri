@@ -3,10 +3,8 @@
 import { useState } from "react"
 
 import { profile, socials } from "@/data/resume"
-import { useSound } from "@/components/sound/sound-provider"
 
 export function ContactSection() {
-  const { play } = useSound()
   const [sent, setSent] = useState(false)
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -14,7 +12,6 @@ export function ContactSection() {
     const data = new FormData(e.currentTarget)
     const get = (k: string) => String(data.get(k) ?? "")
     const body = `${get("message")}\n\n— ${get("name")}${get("email") ? ` (${get("email")})` : ""}`
-    play("telegraph")
     setSent(true)
     window.location.href = `mailto:${profile.email}?subject=${encodeURIComponent(get("subject"))}&body=${encodeURIComponent(body)}`
   }

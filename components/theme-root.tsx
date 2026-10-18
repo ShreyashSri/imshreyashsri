@@ -1,10 +1,18 @@
 "use client"
 
-import { createContext, useCallback, useContext, useEffect, useState } from "react"
+import { createContext, useCallback, useContext, useEffect, useState, type ComponentType } from "react"
+import dynamic from "next/dynamic"
 
-import { defaultTheme, type ThemeId } from "@/data/games"
+import { defaultTheme, isThemeId, type ThemeId } from "@/data/games"
 import FrontierApp from "@/components/themes/rdr2/frontier-app"
-import ValorantApp from "@/components/themes/valorant/valorant-app"
+
+const apps: Record<ThemeId, ComponentType> = {
+  rdr2: FrontierApp,
+  valorant: dynamic(() => import("@/components/themes/valorant/valorant-app"), { ssr: false }),
+  "god-of-war": dynamic(() => import("@/components/themes/god-of-war/god-of-war-app"), { ssr: false }),
+  "ghost-of-tsushima": dynamic(() => import("@/components/themes/ghost-of-tsushima/ghost-app"), { ssr: false }),
+  "assassins-creed": dynamic(() => import("@/components/themes/assassins-creed/animus-app"), { ssr: false }),
+}
 
 const STORAGE_KEY = "portfolio-theme"
 
@@ -17,7 +25,7 @@ export const useTheme = () => useContext(ThemeContext)
 function readStoredTheme(): ThemeId {
   try {
     const stored = localStorage.getItem(STORAGE_KEY)
-    if (stored === "rdr2" || stored === "valorant") return stored
+    if (isThemeId(stored)) return stored
   } catch {}
   return defaultTheme
 }
@@ -49,10 +57,13 @@ export default function ThemeRoot() {
     }, 600)
   }, [])
 
+  const App = theme ? apps[theme] : null
+
   return (
     <ThemeContext.Provider value={{ theme: theme ?? defaultTheme, switchTheme }}>
-      {theme === "rdr2" && <FrontierApp />}
-      {theme === "valorant" && <ValorantApp />}
+      <div id="theme-app" className="contents">
+        {App && <App />}
+      </div>
       <div
         aria-hidden={!curtain}
         className="pointer-events-none fixed inset-0 z-1000 bg-black transition-opacity duration-500"

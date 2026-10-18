@@ -1,7 +1,25 @@
 import type React from "react"
 import type { Metadata, Viewport } from "next"
 import localFont from "next/font/local"
-import { Arvo, Bebas_Neue, Inter, Open_Sans, Rajdhani, Special_Elite, UnifrakturMaguntia } from "next/font/google"
+import {
+  Anton,
+  Arvo,
+  Barlow,
+  Barlow_Condensed,
+  Bebas_Neue,
+  Cinzel,
+  EB_Garamond,
+  Exo_2,
+  Inter,
+  Marcellus,
+  Noto_Sans_Runic,
+  Open_Sans,
+  Rajdhani,
+  Shippori_Mincho,
+  Special_Elite,
+  UnifrakturMaguntia,
+  Yuji_Syuku,
+} from "next/font/google"
 import "./globals.css"
 
 const redemption = localFont({ src: "./fonts/rdr2/redemption.woff2", variable: "--face-redemption", display: "block" })
@@ -24,7 +42,40 @@ const bebas = Bebas_Neue({ weight: "400", subsets: ["latin"], variable: "--face-
 const rajdhani = Rajdhani({ weight: ["400", "500", "600", "700"], subsets: ["latin"], variable: "--face-rajdhani", display: "swap" })
 const inter = Inter({ subsets: ["latin"], variable: "--face-inter", display: "swap" })
 
-const fonts = [redemption, chineseRocks, kirsty, hand, arvo, openSans, typewriter, blackletter, bebas, rajdhani, inter]
+const anton = Anton({ weight: "400", variable: "--face-anton", display: "swap", preload: false })
+const barlow = Barlow({ weight: ["400", "500", "600", "700"], variable: "--face-barlow", display: "swap", preload: false })
+const barlowCondensed = Barlow_Condensed({ weight: ["500", "600", "700"], variable: "--face-barlow-condensed", display: "swap", preload: false })
+const cinzel = Cinzel({ weight: ["400", "600", "700", "900"], variable: "--face-cinzel", display: "swap", preload: false })
+const garamond = EB_Garamond({ weight: ["400", "500", "600"], style: ["normal", "italic"], variable: "--face-garamond", display: "swap", preload: false })
+const runic = Noto_Sans_Runic({ weight: "400", variable: "--face-runic", display: "swap", preload: false })
+const mincho = Shippori_Mincho({ weight: ["400", "500", "700", "800"], variable: "--face-mincho", display: "swap", preload: false })
+const brush = Yuji_Syuku({ weight: "400", variable: "--face-brush", display: "swap", preload: false })
+const marcellus = Marcellus({ weight: "400", variable: "--face-marcellus", display: "swap", preload: false })
+const exo = Exo_2({ weight: ["300", "400", "500", "600", "700"], variable: "--face-exo", display: "swap", preload: false })
+
+const fonts = [
+  redemption,
+  chineseRocks,
+  kirsty,
+  hand,
+  arvo,
+  openSans,
+  typewriter,
+  blackletter,
+  bebas,
+  rajdhani,
+  inter,
+  anton,
+  barlow,
+  barlowCondensed,
+  cinzel,
+  garamond,
+  runic,
+  mincho,
+  brush,
+  marcellus,
+  exo,
+]
 
 export const metadata: Metadata = {
   title: "Shreyash Srivastava",

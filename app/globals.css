@@ -55,6 +55,16 @@
   --font-type: var(--face-type), Courier New, monospace;
   --font-blackletter: var(--face-blackletter), serif;
   --font-display: var(--face-bebas), Impact, sans-serif;
+  --font-anton: var(--face-anton), Impact, sans-serif;
+  --font-barlow: var(--face-barlow), Arial, sans-serif;
+  --font-barlow-condensed: var(--face-barlow-condensed), Arial Narrow, sans-serif;
+  --font-cinzel: var(--face-cinzel), Georgia, serif;
+  --font-garamond: var(--face-garamond), Georgia, serif;
+  --font-runic: var(--face-runic), serif;
+  --font-mincho: var(--face-mincho), "Hiragino Mincho ProN", serif;
+  --font-brush: var(--face-brush), var(--face-mincho), serif;
+  --font-marcellus: var(--face-marcellus), Georgia, serif;
+  --font-exo: var(--face-exo), Arial, sans-serif;
 
   --animate-blink: blink 1s ease-in-out infinite;
 

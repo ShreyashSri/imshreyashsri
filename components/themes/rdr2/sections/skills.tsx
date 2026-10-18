@@ -1,56 +1,5 @@
-import {
-  siArgo,
-  siCodechef,
-  siCodeforces,
-  siFirebase,
-  siGrafana,
-  siLeetcode,
-  siOpentelemetry,
-  siSupabase,
-  siDjango,
-  siDocker,
-  siFlask,
-  siGin,
-  siGithubactions,
-  siGo,
-  siKubernetes,
-  siMongodb,
-  siNextdotjs,
-  siPostgresql,
-  siPrometheus,
-  siPython,
-  siTypescript,
-  type SimpleIcon,
-} from "simple-icons"
-
 import { skillGroups } from "@/data/resume"
-
-export const logos: Record<string, SimpleIcon> = {
-  Go: siGo,
-  Python: siPython,
-  TypeScript: siTypescript,
-  Gin: siGin,
-  "Next.js": siNextdotjs,
-  Flask: siFlask,
-  Django: siDjango,
-  PostgreSQL: siPostgresql,
-  MongoDB: siMongodb,
-  Docker: siDocker,
-  Kubernetes: siKubernetes,
-  "CI/CD": siGithubactions,
-  Prometheus: siPrometheus,
-  Supabase: siSupabase,
-  Firebase: siFirebase,
-  ArgoCD: siArgo,
-  Grafana: siGrafana,
-  Alertmanager: siPrometheus,
-  OpenTelemetry: siOpentelemetry,
-  CodeChef: siCodechef,
-  LeetCode: siLeetcode,
-  Codeforces: siCodeforces,
-}
-
-const ratings: Record<string, string> = { CodeChef: "2★ · 1415", LeetCode: "1441" }
+import { logos, ratings } from "@/components/shared/tech-logo"
 
 export function SkillsSection() {
   return (

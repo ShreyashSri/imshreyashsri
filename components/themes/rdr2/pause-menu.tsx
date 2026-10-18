@@ -4,11 +4,9 @@ import { useEffect, useRef } from "react"
 import Image from "next/image"
 import { ChevronLeft } from "lucide-react"
 
-import { useSound } from "@/components/sound/sound-provider"
 import { sections, type SectionId } from "./sections"
 
 export function PauseMenu({ tab, onTab, onClose }: { tab: SectionId; onTab: (tab: SectionId) => void; onClose: () => void }) {
-  const { play } = useSound()
   const index = sections.findIndex((s) => s.id === tab)
   const section = sections[index]
   const scroller = useRef<HTMLDivElement>(null)
@@ -16,7 +14,6 @@ export function PauseMenu({ tab, onTab, onClose }: { tab: SectionId; onTab: (tab
   const closeRef = useRef<HTMLButtonElement>(null)
 
   const step = (dir: number) => {
-    play("tick")
     onTab(sections[(index + dir + sections.length) % sections.length].id)
   }
 
@@ -94,7 +91,6 @@ export function PauseMenu({ tab, onTab, onClose }: { tab: SectionId; onTab: (tab
                 }}
                 type="button"
                 onClick={() => {
-                  play("tick")
                   onTab(s.id)
                 }}
                 aria-current={s.id === tab ? "page" : undefined}

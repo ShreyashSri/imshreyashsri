@@ -4,7 +4,7 @@ import { useCallback, useEffect, useRef, useState } from "react"
 import Image from "next/image"
 
 import { profile, socials } from "@/data/resume"
-import { useSound } from "@/components/sound/sound-provider"
+import { useMusic } from "@/components/music/music-provider"
 import { MenuPreview } from "./menu-preview"
 import { PauseMenu } from "./pause-menu"
 import { isSectionId, sections, type SectionId } from "./sections"
@@ -19,7 +19,7 @@ const entries: Entry[] = [
 ]
 
 export function Home({ onCredits, covered }: { onCredits: () => void; covered: boolean }) {
-  const { enabled, setEnabled, play } = useSound()
+  const { playing, setPlaying } = useMusic()
   const [highlight, setHighlight] = useState<string>("about")
   const [backdrop, setBackdrop] = useState<string>(sections[0].backdrop)
   const [tab, setTab] = useState<SectionId | null>(null)
@@ -30,33 +30,28 @@ export function Home({ onCredits, covered }: { onCredits: () => void; covered: b
   const hover = useCallback(
     (id: string | null) => {
       if (!id || id === highlight) return
-      play("tick")
       setHighlight(id)
       const s = sections.find((x) => x.id === id)
       if (s) setBackdrop(s.backdrop)
     },
-    [highlight, play],
+    [highlight],
   )
 
   const choose = useCallback(
     (id: string) => {
       if (isSectionId(id)) {
-        play("page")
         setTab(id)
         history.replaceState(null, "", `#${id}`)
       } else if (id === "resume") {
-        play("select")
         window.open(profile.resume, "_blank", "noopener,noreferrer")
       } else if (id === "credits") {
-        play("select")
         onCredits()
       }
     },
-    [onCredits, play],
+    [onCredits],
   )
 
   const close = () => {
-    play("close")
     if (tab) {
       setHighlight(tab)
       buttons.current[entries.findIndex((e) => e.id === tab)]?.focus({ preventScroll: true })
@@ -89,7 +84,7 @@ export function Home({ onCredits, covered }: { onCredits: () => void; covered: b
         hover(entries[next].id)
         buttons.current[next]?.focus({ preventScroll: true })
       }
-      if (e.key === "m" || e.key === "M") setEnabled(!enabled)
+      if (e.key === "m" || e.key === "M") setPlaying(!playing)
     }
     window.addEventListener("keydown", onKey)
     return () => window.removeEventListener("keydown", onKey)
@@ -102,7 +97,7 @@ export function Home({ onCredits, covered }: { onCredits: () => void; covered: b
           {sections.map((s) => (
             <div key={s.id} className="absolute inset-0 transition-opacity duration-1200" style={{ opacity: s.backdrop === backdrop ? 1 : 0 }}>
               <div className="absolute inset-0 motion-safe:animate-[menu-drift_36s_ease-in-out_infinite_alternate]">
-                <Image src={`/themes/rdr2/backdrops/${s.backdrop}.webp`} alt="" fill sizes="100vw" priority={s.id === "about"} className="object-cover" />
+                <Image src={`/themes/rdr2/backdrops/${s.backdrop}.webp`} alt="" fill sizes="100vw" preload={s.id === "about"} className="object-cover" />
               </div>
             </div>
           ))}
@@ -195,9 +190,9 @@ export function Home({ onCredits, covered }: { onCredits: () => void; covered: b
                 <span className="keycap">↵</span>
                 Select
               </span>
-              <button type="button" onClick={() => setEnabled(!enabled)} className="flex items-center gap-2 uppercase hover:text-white" aria-pressed={enabled}>
+              <button type="button" onClick={() => setPlaying(!playing)} className="flex items-center gap-2 uppercase hover:text-white" aria-pressed={playing}>
                 <span className="keycap">M</span>
-                Sound {enabled ? "on" : "off"}
+                Music {playing ? "on" : "off"}
               </button>
             </div>
           </div>

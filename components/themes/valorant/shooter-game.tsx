@@ -3,7 +3,6 @@
 import { useEffect, useRef, useState, useCallback } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 
-import { useSound } from "@/components/sound/sound-provider"
 
 interface Target {
   id: number
@@ -42,7 +41,6 @@ const AGENT_FACTS = [
 const GAME_DURATION = 30
 
 export default function ShooterGame({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) {
-  const { play } = useSound()
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const animFrameRef = useRef<number>(0)
   const [gameState, setGameState] = useState<GameState>("ready")
@@ -60,6 +58,13 @@ export default function ShooterGame({ isOpen, onClose }: { isOpen: boolean; onCl
   const totalShotsRef = useRef(0)
   const targetsHitRef = useRef(0)
   const scoreRef = useRef(0)
+
+  useEffect(() => {
+    if (!isOpen) return
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && onClose()
+    window.addEventListener("keydown", onKey)
+    return () => window.removeEventListener("keydown", onKey)
+  }, [isOpen, onClose])
 
   const spawnTarget = useCallback((canvasW: number, canvasH: number) => {
     const margin = 60
@@ -302,7 +307,6 @@ export default function ShooterGame({ isOpen, onClose }: { isOpen: boolean; onCl
 
       totalShotsRef.current += 1
       setTotalShots(totalShotsRef.current)
-      play("shot")
 
       const mx = e.clientX
       const my = e.clientY
@@ -321,7 +325,6 @@ export default function ShooterGame({ isOpen, onClose }: { isOpen: boolean; onCl
 
       if (hitTarget) {
         hitTarget.hit = true
-        play("hit")
         const reactionTime = (Date.now() - hitTarget.spawnTime) / 1000
         const points = Math.max(10, Math.floor(100 - reactionTime * 25))
         scoreRef.current += points
@@ -342,7 +345,7 @@ export default function ShooterGame({ isOpen, onClose }: { isOpen: boolean; onCl
       window.removeEventListener("mousemove", handleMouseMove)
       window.removeEventListener("click", handleClick)
     }
-  }, [isOpen, gameState, play])
+  }, [isOpen, gameState])
 
   if (!isOpen) return null
 

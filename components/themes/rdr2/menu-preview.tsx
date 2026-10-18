@@ -8,7 +8,7 @@ import { games } from "@/data/games"
 import { projects } from "@/data/projects"
 import { awards, chapters, contributions, profile, skillGroups, tally } from "@/data/resume"
 import { headlines } from "./sections/projects"
-import { logos } from "./sections/skills"
+import { logos } from "@/components/shared/tech-logo"
 
 type Layer = { delay: number; rotate?: number; depth?: number; dim?: number }
 

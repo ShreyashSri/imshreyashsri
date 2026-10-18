@@ -1,0 +1,828 @@
+@reference "../../../app/globals.css";
+
+@property --realm {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #c8a24a;
+}
+
+.theme-gow {
+  --gow-bg: #0b1214;
+  --gow-deep: #071012;
+  --gow-gold: #c8a24a;
+  --gow-gold-bright: #e9c46a;
+  --gow-bone: #e8dfc8;
+  --gow-line: rgba(200, 162, 74, 0.32);
+  background: radial-gradient(120% 80% at 50% 110%, #0f2224, #071012 60%, #040809);
+  color: var(--gow-bone);
+  font-family: var(--face-garamond), Georgia, serif;
+}
+
+.theme-gow ::selection {
+  background: var(--gow-gold);
+  color: var(--gow-deep);
+}
+
+.theme-gow :focus-visible {
+  outline: 1px solid var(--gow-gold-bright);
+  outline-offset: 3px;
+}
+
+.gow-realm {
+  transition: --realm 1.2s ease;
+}
+
+.gow-frame {
+  position: relative;
+  background: linear-gradient(180deg, rgba(14, 26, 29, 0.92), rgba(7, 14, 16, 0.94));
+  border: 1px solid var(--gow-line);
+  box-shadow:
+    inset 0 0 0 4px rgba(7, 14, 16, 0.9),
+    inset 0 0 0 5px rgba(200, 162, 74, 0.16),
+    0 24px 60px -20px rgba(0, 0, 0, 0.8);
+}
+
+.gow-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  padding: 0.7rem 1.5rem;
+  border: 1px solid rgba(200, 162, 74, 0.55);
+  background: rgba(7, 14, 16, 0.6);
+  color: var(--gow-gold-bright);
+  font-family: var(--face-cinzel), Georgia, serif;
+  font-weight: 700;
+  font-size: 0.82rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  transition: background-color 0.25s, color 0.25s, border-color 0.25s, box-shadow 0.25s;
+}
+
+.gow-btn:hover,
+.gow-btn:focus-visible {
+  border-color: var(--gow-gold-bright);
+  background: rgba(200, 162, 74, 0.14);
+  box-shadow: 0 0 22px -4px rgba(233, 196, 106, 0.55);
+  color: #fff3d0;
+}
+
+.gow-btn-primary {
+  border-color: var(--gow-gold-bright);
+  background: linear-gradient(180deg, #ecd08a, #c39a3e 55%, #9c7629);
+  color: #1a1206;
+  text-shadow: 0 1px 0 rgba(255, 240, 200, 0.45);
+}
+
+.gow-btn-primary:hover,
+.gow-btn-primary:focus-visible {
+  background: linear-gradient(180deg, #f6dfa3, #d4ab4d 55%, #ad8533);
+  color: #120c03;
+}
+
+.gow-title {
+  font-family: var(--face-cinzel), Georgia, serif;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gow-bone);
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.7);
+}
+
+.gow-gold {
+  background: linear-gradient(180deg, #f8e3a6 10%, #d4ab4d 55%, #8c6a24);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.gow-entry {
+  position: relative;
+  border: 1px solid transparent;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+.gow-entry:hover {
+  background: rgba(200, 162, 74, 0.06);
+  border-color: rgba(200, 162, 74, 0.2);
+}
+
+.gow-entry[aria-pressed="true"] {
+  background: linear-gradient(90deg, color-mix(in srgb, var(--node, var(--realm)) 22%, transparent), transparent);
+  border-color: color-mix(in srgb, var(--node, var(--realm)) 45%, transparent);
+}
+
+.gow-entry[aria-pressed="true"]::before {
+  content: "";
+  position: absolute;
+  left: -1px;
+  top: -1px;
+  bottom: -1px;
+  width: 3px;
+  background: var(--node, var(--realm));
+  box-shadow: 0 0 12px var(--node, var(--realm));
+}
+
+.gow-field {
+  width: 100%;
+  background: rgba(7, 14, 16, 0.7);
+  border: 1px solid var(--gow-line);
+  padding: 0.75rem 0.9rem;
+  color: var(--gow-bone);
+  font-size: 1.05rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.gow-field:focus {
+  outline: none;
+  border-color: var(--gow-gold-bright);
+  box-shadow: 0 0 18px -6px rgba(233, 196, 106, 0.6);
+}
+
+.gow-field::placeholder {
+  color: rgba(232, 223, 200, 0.35);
+  font-style: italic;
+}
+
+.gow-rc {
+  position: relative;
+}
+
+.gow-rc[data-r] {
+  visibility: hidden;
+}
+
+.gow-rc[data-r]::after {
+  content: attr(data-r);
+  visibility: visible;
+  position: absolute;
+  left: 50%;
+  top: 52%;
+  transform: translate(-50%, -50%);
+  font-family: var(--face-runic), serif;
+  font-size: 0.9em;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0;
+  color: var(--realm, #e9c46a);
+  text-shadow: 0 0 10px color-mix(in srgb, var(--realm, #e9c46a) 70%, transparent);
+}
+
+.gow-fog {
+  position: absolute;
+  width: 110vmax;
+  height: 110vmax;
+  border-radius: 50%;
+  will-change: transform;
+  animation: gow-fog 38s ease-in-out infinite alternate;
+}
+
+.gow-fog-a {
+  left: -45vmax;
+  top: -50vmax;
+  background: radial-gradient(closest-side, color-mix(in srgb, var(--realm) 20%, transparent), transparent);
+}
+
+.gow-fog-b {
+  right: -50vmax;
+  bottom: -60vmax;
+  background: radial-gradient(closest-side, rgba(36, 86, 86, 0.32), transparent);
+  animation-duration: 46s;
+  animation-direction: alternate-reverse;
+}
+
+.gow-fog-c {
+  left: 10vmax;
+  bottom: -70vmax;
+  background: radial-gradient(closest-side, color-mix(in srgb, var(--realm) 12%, transparent), transparent);
+  animation-duration: 54s;
+}
+
+@keyframes gow-fog {
+  from {
+    transform: translate3d(-4vmax, 2vmax, 0) scale(1);
+  }
+  to {
+    transform: translate3d(6vmax, -4vmax, 0) scale(1.12);
+  }
+}
+
+.gow-knot-field {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cg fill='none' stroke='%23c8a24a' stroke-width='1.2'%3E%3Cpath d='M0 60 C20 20 40 20 60 60 S100 100 120 60'/%3E%3Cpath d='M0 60 C20 100 40 100 60 60 S100 20 120 60'/%3E%3Cpath d='M60 0 C20 20 20 40 60 60 S100 100 60 120'/%3E%3Cpath d='M60 0 C100 20 100 40 60 60 S20 100 60 120'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 120px 120px;
+  opacity: 0.035;
+  mask-image: radial-gradient(70% 60% at 50% 50%, #000, transparent);
+}
+
+.gow-vignette {
+  background:
+    radial-gradient(120% 90% at 50% 45%, transparent 35%, rgba(3, 7, 8, 0.85) 100%),
+    linear-gradient(180deg, rgba(3, 7, 8, 0.55), transparent 22%, transparent 75%, rgba(3, 7, 8, 0.8));
+}
+
+.gow-sigil {
+  position: relative;
+  clip-path: polygon(30% 0, 70% 0, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0 70%, 0 30%);
+  background: linear-gradient(160deg, color-mix(in srgb, var(--realm) 80%, #fff 10%), #6b5320);
+}
+
+.gow-sigil::before {
+  content: "";
+  position: absolute;
+  inset: 2px;
+  clip-path: inherit;
+  background: radial-gradient(circle at 50% 35%, #1b3133, #060c0d 80%);
+}
+
+.gow-sigil > * {
+  position: relative;
+  text-shadow: 0 0 14px var(--realm);
+}
+
+.gow-hex {
+  position: relative;
+  clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
+  background: linear-gradient(170deg, #e9c46a, #6b5320);
+}
+
+.gow-hex::before {
+  content: "";
+  position: absolute;
+  inset: 1.5px;
+  clip-path: inherit;
+  background: radial-gradient(circle at 50% 30%, #1d3436, #071012 80%);
+}
+
+.gow-hex > * {
+  position: relative;
+}
+
+.gow-stone {
+  background-color: #3c4644;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.55 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url%28%23g%29'/%3E%3C/svg%3E"), url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='280' height='280'%3E%3Cfilter id='n' x='0' y='0'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.035 0.05' numOctaves='5' seed='11' stitchTiles='stitch'/%3E%3CfeDiffuseLighting lighting-color='%23b9c2bd' surfaceScale='2.6'%3E%3CfeDistantLight azimuth='230' elevation='48'/%3E%3C/feDiffuseLighting%3E%3C/filter%3E%3Crect width='280' height='280' filter='url%28%23n%29'/%3E%3C/svg%3E"), linear-gradient(180deg, #4d5855, #2c3433);
+  background-size: 160px 160px, 280px 280px, 100% 100%;
+  background-blend-mode: normal, multiply, normal;
+}
+
+.gow-tablet-wrap {
+  filter: drop-shadow(0 22px 26px rgba(0, 0, 0, 0.65));
+  transition: filter 0.4s, translate 0.4s;
+}
+
+.gow-tablet-wrap[data-on] {
+  translate: 0 -6px;
+  filter: drop-shadow(0 22px 26px rgba(0, 0, 0, 0.65)) drop-shadow(0 0 22px color-mix(in srgb, var(--realm) 45%, transparent));
+}
+
+.gow-tablet,
+.gow-runestone {
+  position: relative;
+  color: #e8dfc8;
+  box-shadow:
+    inset 3px 3px 0 rgba(255, 255, 255, 0.07),
+    inset -4px -5px 0 rgba(0, 0, 0, 0.35),
+    inset 0 0 40px rgba(0, 0, 0, 0.45);
+}
+
+.gow-tablet {
+  clip-path: polygon(14% 0, 86% 0, 100% 7%, 100% 96%, 96% 100%, 4% 100%, 0 96%, 0 7%);
+}
+
+.gow-runestone {
+  clip-path: polygon(20% 0, 78% 1.5%, 95% 14%, 100% 100%, 0 100%, 5% 13%);
+}
+
+.gow-tablet::after,
+.gow-runestone::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(240px circle at var(--lx, 50%) var(--ly, 30%), color-mix(in srgb, var(--realm) 26%, transparent), transparent 70%);
+  transition: opacity 0.35s;
+}
+
+.gow-tablet:hover::after,
+.gow-tablet[aria-pressed="true"]::after,
+.gow-runestone:hover::after {
+  opacity: 1;
+}
+
+.gow-tablet[aria-pressed="true"]::after {
+  background: radial-gradient(320px circle at var(--lx, 50%) var(--ly, 30%), color-mix(in srgb, var(--realm) 30%, transparent), transparent 75%);
+}
+
+.gow-carve {
+  color: rgba(236, 228, 208, 0.9);
+  text-shadow:
+    0 -1px 0 rgba(0, 0, 0, 0.75),
+    0 1px 0 rgba(255, 255, 255, 0.1),
+    0 2px 6px rgba(0, 0, 0, 0.5);
+  transition: color 0.35s, text-shadow 0.35s;
+}
+
+.gow-carve-soft {
+  color: rgba(226, 218, 198, 0.66);
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.7);
+}
+
+.gow-tablet:hover .gow-carve,
+.gow-tablet[aria-pressed="true"] .gow-carve,
+.gow-runestone:hover .gow-carve {
+  color: color-mix(in srgb, var(--realm) 80%, #fff 20%);
+  text-shadow:
+    0 0 14px color-mix(in srgb, var(--realm) 75%, transparent),
+    0 1px 0 rgba(0, 0, 0, 0.5);
+}
+
+.gow-etch {
+  color: rgba(226, 218, 198, 0.55);
+  transition: color 0.35s, filter 0.35s;
+}
+
+.gow-tablet:hover .gow-etch,
+.gow-tablet[aria-pressed="true"] .gow-etch {
+  color: var(--realm);
+  filter: drop-shadow(0 0 6px var(--realm));
+}
+
+.gow-band {
+  display: block;
+  background: rgba(6, 10, 10, 0.42);
+  box-shadow:
+    inset 0 3px 6px rgba(0, 0, 0, 0.55),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.1);
+  color: rgba(240, 232, 212, 0.88);
+}
+
+.gow-runestone-glyph {
+  color: color-mix(in srgb, var(--medal) 55%, #20282a);
+  text-shadow:
+    0 -1px 0 rgba(0, 0, 0, 0.7),
+    0 0 0 transparent;
+  transition: color 0.4s, text-shadow 0.4s;
+}
+
+.gow-runestone:hover .gow-runestone-glyph,
+.gow-runestone:focus-visible .gow-runestone-glyph {
+  color: var(--medal);
+  text-shadow: 0 0 18px var(--medal), 0 0 40px color-mix(in srgb, var(--medal) 50%, transparent);
+}
+
+.gow-runestone .gow-runestone-glyph {
+  animation: gow-glyph 5s ease-in-out infinite;
+}
+
+@keyframes gow-glyph {
+  0%,
+  100% {
+    color: color-mix(in srgb, var(--medal) 55%, #20282a);
+  }
+  50% {
+    color: color-mix(in srgb, var(--medal) 85%, #20282a);
+    text-shadow: 0 0 14px color-mix(in srgb, var(--medal) 45%, transparent);
+  }
+}
+
+.gow-runestone:hover .gow-runestone-glyph {
+  animation: none;
+}
+
+.gow-compass {
+  mask-image: linear-gradient(90deg, transparent, #000 16%, #000 84%, transparent);
+}
+
+.gow-compass::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 13px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(200, 162, 74, 0.7), transparent);
+}
+
+.gow-compass-ticks {
+  background-image: repeating-linear-gradient(90deg, rgba(200, 162, 74, 0.55) 0 1px, transparent 1px 13.5px);
+}
+
+.gow-compass-needle {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  z-index: 1;
+  width: 0;
+  height: 0;
+  transform: translateX(-50%);
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 8px solid var(--realm);
+  filter: drop-shadow(0 0 6px var(--realm));
+}
+
+.gow-tree-tab {
+  border: 1px solid rgba(200, 162, 74, 0.25);
+  background: rgba(7, 16, 18, 0.7);
+  color: rgba(232, 223, 200, 0.6);
+  transition: color 0.2s, border-color 0.2s, background-color 0.2s;
+}
+
+.gow-tree-tab:hover {
+  color: var(--gow-bone);
+  border-color: rgba(200, 162, 74, 0.55);
+}
+
+.gow-tree-tab.is-on {
+  color: #fff3d0;
+  border-color: var(--realm);
+  background: linear-gradient(180deg, color-mix(in srgb, var(--realm) 22%, transparent), rgba(7, 16, 18, 0.8));
+  box-shadow: 0 0 18px -6px var(--realm);
+}
+
+.gow-skill {
+  animation: gow-pop 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) backwards;
+}
+
+.gow-skill-node {
+  position: relative;
+  transition: transform 0.25s;
+}
+
+.gow-skill-node::before {
+  content: "";
+  position: absolute;
+  inset: 13%;
+  transform: rotate(45deg);
+  border: 1.5px solid var(--gow-gold);
+  background: radial-gradient(circle at 50% 30%, #23413f, #071012 75%);
+  box-shadow:
+    inset 0 0 0 3px rgba(7, 16, 18, 0.95),
+    inset 0 0 0 4px rgba(200, 162, 74, 0.3),
+    0 0 16px -4px rgba(233, 196, 106, 0.6);
+  transition: border-color 0.25s, box-shadow 0.25s;
+}
+
+.gow-skill-node > * {
+  position: relative;
+}
+
+.gow-skill:hover .gow-skill-node,
+.gow-skill[aria-pressed="true"] .gow-skill-node {
+  transform: scale(1.1);
+}
+
+.gow-skill[aria-pressed="true"] .gow-skill-node::before,
+.gow-skill-node.is-big::before {
+  border-color: #ffe9a8;
+  box-shadow:
+    inset 0 0 0 3px rgba(7, 16, 18, 0.95),
+    inset 0 0 0 4px rgba(255, 233, 168, 0.5),
+    0 0 26px var(--realm);
+}
+
+.gow-stat .gow-hex {
+  transition: filter 0.3s;
+}
+
+.gow-stat:hover .gow-hex {
+  filter: drop-shadow(0 0 10px var(--realm));
+}
+
+.gow-lore {
+  position: relative;
+  border: 1px solid var(--gow-line);
+  background: linear-gradient(180deg, rgba(14, 26, 29, 0.92), rgba(7, 14, 16, 0.94));
+  transition: border-color 0.3s, box-shadow 0.3s, translate 0.3s;
+}
+
+.gow-lore:hover {
+  translate: 0 -3px;
+  border-color: var(--realm);
+  box-shadow: 0 0 34px -10px var(--realm);
+}
+
+.gow-lore-num {
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(200, 162, 74, 0.35);
+}
+
+.gow-stamp {
+  display: inline-block;
+  rotate: -6deg;
+  border: 2px solid var(--realm);
+  padding: 0.45rem 0.8rem;
+  color: var(--realm);
+  box-shadow: inset 0 0 0 2px rgba(7, 16, 18, 0.9), inset 0 0 0 3px color-mix(in srgb, var(--realm) 40%, transparent);
+  animation: gow-stamp 0.45s cubic-bezier(0.3, 1.6, 0.5, 1) backwards 0.2s;
+}
+
+@keyframes gow-stamp {
+  from {
+    opacity: 0;
+    scale: 1.6;
+  }
+}
+
+.gow-rarity {
+  border-color: color-mix(in srgb, var(--rarity) 55%, transparent);
+  box-shadow:
+    inset 0 0 0 4px rgba(7, 14, 16, 0.9),
+    inset 0 0 0 5px color-mix(in srgb, var(--rarity) 25%, transparent),
+    0 0 50px -18px var(--rarity),
+    0 24px 60px -20px rgba(0, 0, 0, 0.8);
+}
+
+.gow-raven {
+  animation: gow-raven 2s cubic-bezier(0.45, 0.05, 0.4, 1) forwards;
+}
+
+@keyframes gow-raven {
+  0% {
+    transform: translate(-140px, 72vh) scale(0.9) rotate(-14deg);
+  }
+  65% {
+    transform: translate(52vw, 28vh) scale(1.35) rotate(-6deg);
+  }
+  100% {
+    transform: translate(70vw, 16vh) scale(1.45) rotate(-4deg);
+  }
+}
+
+.gow-raven-body {
+  filter: drop-shadow(0 0 8px rgba(143, 240, 192, 0.5));
+  animation: gow-raven-fade 2s ease forwards;
+}
+
+@keyframes gow-raven-fade {
+  0%,
+  62% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.gow-wing-up,
+.gow-wing-down {
+  transform-box: fill-box;
+  animation: gow-flap 0.24s ease-in-out infinite alternate;
+}
+
+.gow-wing-up {
+  transform-origin: 100% 100%;
+}
+
+.gow-wing-down {
+  transform-origin: 0 100%;
+}
+
+@keyframes gow-flap {
+  to {
+    transform: scaleY(-0.55);
+  }
+}
+
+.gow-raven-burst span {
+  position: absolute;
+  left: 60px;
+  top: 34px;
+  width: 5px;
+  height: 5px;
+  border-radius: 9999px;
+  background: #b9ffd9;
+  box-shadow: 0 0 10px 3px rgba(110, 240, 170, 0.75);
+  opacity: 0;
+  animation: gow-spirit var(--d) ease-out 1.3s forwards;
+}
+
+@keyframes gow-spirit {
+  0% {
+    opacity: 1;
+    transform: none;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--dx), var(--dy)) scale(0.3);
+  }
+}
+
+.gow-home[data-leaving] {
+  pointer-events: none;
+  animation: gow-zoom 1.05s cubic-bezier(0.6, 0, 0.8, 0.4) forwards;
+}
+
+@keyframes gow-zoom {
+  to {
+    transform: scale(2.8);
+    opacity: 0;
+  }
+}
+
+.gow-travel-label {
+  text-shadow: 0 0 20px rgba(0, 0, 0, 0.9);
+  animation: gow-in 0.5s ease backwards 0.15s;
+}
+
+@keyframes gow-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+}
+
+.gow-in {
+  animation: gow-in 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) backwards;
+}
+
+@keyframes gow-arrive {
+  from {
+    opacity: 0;
+    transform: scale(1.04);
+  }
+}
+
+.gow-arrive {
+  animation: gow-arrive 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+@keyframes gow-pop {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.4);
+  }
+}
+
+@keyframes gow-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.gow-draw {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: gow-draw 1.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes gow-flow {
+  from {
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.gow-flow {
+  stroke-dasharray: 0.16 0.84;
+  animation: gow-flow 1.5s linear infinite;
+}
+
+@keyframes gow-node-in {
+  from {
+    opacity: 0;
+  }
+}
+
+.gow-node-g {
+  animation: gow-node-in 0.6s ease backwards;
+}
+
+.gow-lens-in {
+  animation: gow-node-in 0.4s ease;
+}
+
+@keyframes gow-ripple {
+  from {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  to {
+    transform: scale(1.9);
+    opacity: 0;
+  }
+}
+
+.gow-ripple {
+  animation: gow-ripple 1.8s ease-out infinite;
+}
+
+@keyframes gow-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.gow-spin,
+.gow-spin-rev {
+  transform-origin: center;
+  transform-box: fill-box;
+  animation: gow-spin 140s linear infinite;
+}
+
+.gow-spin-rev {
+  animation-direction: reverse;
+  animation-duration: 90s;
+}
+
+@keyframes gow-pulse {
+  50% {
+    opacity: 0.55;
+  }
+}
+
+.gow-pulse {
+  animation: gow-pulse 4s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gow-in,
+  .gow-arrive,
+  .gow-fog,
+  .gow-spin,
+  .gow-spin-rev,
+  .gow-pulse,
+  .gow-flow,
+  .gow-ripple,
+  .gow-node-g,
+  .gow-lens-in,
+  .gow-skill,
+  .gow-stamp,
+  .gow-runestone .gow-runestone-glyph,
+  .gow-travel-label {
+    animation: none;
+  }
+
+  .gow-draw {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
+
+  .gow-raven {
+    display: none;
+  }
+
+  .gow-realm {
+    transition: none;
+  }
+}
+
+.gow-vista {
+  opacity: 0.17;
+  mask-image: radial-gradient(ellipse 75% 70% at 60% 45%, #000 30%, transparent 85%);
+  animation: gow-vista 1.6s ease-out both;
+}
+
+@keyframes gow-vista {
+  from {
+    opacity: 0;
+    transform: scale(1.05);
+  }
+  to {
+    opacity: 0.17;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gow-vista {
+    animation: none;
+  }
+}
+
+.gow-inscription {
+  fill: #e9c46a;
+  filter: drop-shadow(0 0 4px rgba(233, 196, 106, 0.55));
+}
+
+.gow-gem-pulse {
+  animation: gow-gem-pulse 2.4s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+@keyframes gow-gem-pulse {
+  0%,
+  100% {
+    opacity: 0.9;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.25;
+    transform: scale(1.12);
+  }
+}
+
+.gow-centre-rune {
+  animation: gow-in 0.6s ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gow-gem-pulse,
+  .gow-centre-rune {
+    animation: none;
+  }
+}

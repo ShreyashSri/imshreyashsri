@@ -1,0 +1,613 @@
+@reference "../../../app/globals.css";
+
+.theme-ghost {
+  --got-ink: #0a0a0b;
+  --got-paper: #ece6da;
+  --got-muted: rgba(236, 230, 218, 0.64);
+  --got-line: rgba(236, 230, 218, 0.14);
+  --got-red: #c8102e;
+  background: #000;
+  color: var(--got-paper);
+  font-family: var(--face-mincho), "Hiragino Mincho ProN", serif;
+}
+
+.theme-ghost ::selection {
+  background: var(--got-red);
+  color: #fff;
+}
+
+.theme-ghost :focus-visible {
+  outline: 1px solid var(--got-paper);
+  outline-offset: 4px;
+}
+
+.got-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.7rem 1.4rem;
+  border: 1px solid rgba(236, 230, 218, 0.45);
+  color: var(--got-paper);
+  font-family: var(--face-mincho), serif;
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  transition: background-color 0.25s, color 0.25s, border-color 0.25s;
+}
+
+.got-btn:hover,
+.got-btn:focus-visible {
+  background: var(--got-paper);
+  border-color: var(--got-paper);
+  color: var(--got-ink);
+}
+
+.got-btn-primary {
+  background: var(--got-red);
+  border-color: var(--got-red);
+  color: #fff;
+}
+
+.got-btn-primary:hover,
+.got-btn-primary:focus-visible {
+  background: #fff;
+  border-color: #fff;
+  color: var(--got-red);
+}
+
+.got-stroke {
+  mask: url("/themes/ghost-of-tsushima/brush.svg") center / 100% 100% no-repeat;
+}
+
+.got-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+  width: 100%;
+  padding: 0.45rem 1.6rem 0.45rem 0.9rem;
+  text-align: left;
+  color: rgba(236, 230, 218, 0.72);
+  transition: color 0.3s;
+}
+
+.got-item::before {
+  content: "";
+  position: absolute;
+  inset: -7px -10px;
+  background: rgba(244, 238, 228, 0.94);
+  mask: url("/themes/ghost-of-tsushima/brush.svg") left center / 100% 100% no-repeat;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.45s cubic-bezier(0.6, 0, 0.2, 1);
+}
+
+.got-item > * {
+  position: relative;
+}
+
+.got-item[data-on="true"] {
+  color: var(--got-ink);
+}
+
+.got-item[data-on="true"]::before {
+  transform: scaleX(1);
+}
+
+.got-tab {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.15rem;
+  padding: 0.35rem 0.4rem 0.7rem;
+  color: rgba(236, 230, 218, 0.5);
+  white-space: nowrap;
+  transition: color 0.2s;
+}
+
+.got-tab:hover {
+  color: var(--got-paper);
+}
+
+.got-tab[aria-current="page"] {
+  color: var(--got-paper);
+}
+
+.got-tab[aria-current="page"]::after {
+  content: "";
+  position: absolute;
+  left: 8%;
+  right: 8%;
+  bottom: 0;
+  height: 6px;
+  background: var(--got-red);
+  mask: url("/themes/ghost-of-tsushima/brush.svg") center / 100% 100% no-repeat;
+}
+
+.got-seal {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  color: #f7efe4;
+  font-family: var(--face-brush), serif;
+  line-height: 1;
+  clip-path: polygon(4% 7%, 28% 2%, 61% 5%, 96% 1%, 94% 34%, 99% 68%, 96% 97%, 62% 94%, 30% 99%, 2% 96%, 5% 62%, 1% 30%);
+  box-shadow: inset 0 0 0 0.12em rgba(0, 0, 0, 0.12);
+  background-image: radial-gradient(circle at 30% 25%, rgba(255, 255, 255, 0.14), transparent 55%), radial-gradient(circle at 75% 80%, rgba(0, 0, 0, 0.22), transparent 50%);
+}
+
+.got-seal > span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 82%;
+  height: 82%;
+  border: 0.06em solid rgba(247, 239, 228, 0.75);
+}
+
+.got-panel {
+  background: rgba(8, 8, 9, 0.72);
+  border: 1px solid var(--got-line);
+  backdrop-filter: blur(4px);
+}
+
+.got-field {
+  width: 100%;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid rgba(236, 230, 218, 0.28);
+  padding: 0.75rem 0.1rem;
+  color: var(--got-paper);
+  font-size: 1rem;
+  transition: border-color 0.25s;
+}
+
+.got-field:focus {
+  outline: none;
+  border-color: var(--got-red);
+}
+
+.got-field::placeholder {
+  color: rgba(236, 230, 218, 0.32);
+}
+
+.got-ink {
+  filter: grayscale(1) contrast(1.12) brightness(0.82);
+  transition: filter 0.7s ease, transform 0.9s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.group:hover .got-ink,
+.group:focus-visible .got-ink {
+  filter: grayscale(0) contrast(1) brightness(0.95);
+}
+
+@keyframes got-rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.got-rise {
+  animation: got-rise 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+@keyframes got-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.got-fade {
+  animation: got-fade 1.1s ease both;
+}
+
+@keyframes got-drift {
+  from {
+    transform: scale(1.03);
+  }
+  to {
+    transform: scale(1.1) translate3d(-1.2%, -0.8%, 0);
+  }
+}
+
+.got-drift {
+  animation: got-drift 26s ease-in-out infinite alternate;
+}
+
+@keyframes got-stamp {
+  0% {
+    opacity: 0;
+    transform: scale(1.7) rotate(-10deg);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(0.94) rotate(-3deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(-4deg);
+  }
+}
+
+.got-stamp {
+  animation: got-stamp 0.55s cubic-bezier(0.3, 0.6, 0.2, 1) 0.35s both;
+}
+
+@keyframes got-ink-in {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+.got-ink-in {
+  animation: got-ink-in 0.9s cubic-bezier(0.6, 0, 0.2, 1) both;
+}
+
+.got-btn-ink {
+  border-color: rgba(27, 23, 20, 0.55);
+  color: #1b1714;
+}
+
+.got-btn-ink:hover,
+.got-btn-ink:focus-visible {
+  background: #1b1714;
+  border-color: #1b1714;
+  color: #e8dfca;
+}
+
+.got-field-ink {
+  border-bottom-color: rgba(27, 23, 20, 0.3);
+  color: #1b1714;
+}
+
+.got-field-ink::placeholder {
+  color: rgba(27, 23, 20, 0.38);
+}
+
+.got-field-ink:focus {
+  border-color: var(--got-red);
+}
+
+.got-washi {
+  background-color: #e6dcc6;
+  background-image:
+    radial-gradient(120% 90% at 50% 40%, transparent 55%, rgba(120, 92, 56, 0.22) 100%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.6' numOctaves='3' seed='3'/%3E%3CfeColorMatrix values='0 0 0 0 0.45 0 0 0 0 0.36 0 0 0 0 0.24 0 0 0 0.5 -0.14'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23f)'/%3E%3C/svg%3E");
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.55);
+}
+
+.got-washi ::selection {
+  background: var(--got-red);
+  color: #fff;
+}
+
+.got-washi :focus-visible {
+  outline-color: #1b1714;
+}
+
+.got-ink-frame {
+  box-shadow: 0 0 0 1px rgba(27, 23, 20, 0.7), 0 0 0 5px #e6dcc6, 0 0 0 6px rgba(27, 23, 20, 0.35);
+}
+
+.got-rod {
+  margin: 0 -6px;
+  border-radius: 3px;
+  background: linear-gradient(#6b4630, #2a1a12 60%, #160c07);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.got-unroll {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 1.3s cubic-bezier(0.6, 0, 0.2, 1);
+}
+
+.got-unroll[data-open="true"] {
+  grid-template-rows: 1fr;
+}
+
+.got-frame {
+  border: 1px solid var(--got-line);
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.got-verse {
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0.8rem 1rem;
+  text-align: left;
+  color: var(--got-paper);
+  border: 1px solid rgba(236, 230, 218, 0.18);
+  background: rgba(0, 0, 0, 0.4);
+  transition: border-color 0.25s, background-color 0.25s, translate 0.3s;
+}
+
+.got-verse:hover,
+.got-verse:focus-visible {
+  border-color: var(--got-red);
+  background: rgba(200, 16, 46, 0.1);
+  translate: 0 -2px;
+}
+
+.got-node:focus-visible {
+  outline-offset: 6px;
+}
+
+.got-sun {
+  box-shadow: 0 0 140px 30px rgba(255, 255, 255, 0.05);
+  mask-image: radial-gradient(circle, #000 64%, rgba(0, 0, 0, 0.6) 70%, transparent 71%);
+  transition: background-color 1.4s ease, opacity 1.4s ease;
+}
+
+.got-photo {
+  mask-image: radial-gradient(ellipse 70% 80% at 68% 42%, #000 25%, transparent 78%);
+}
+
+.got-mist {
+  left: 0;
+  right: auto;
+  width: 200%;
+  background:
+    radial-gradient(40% 50% at 20% 50%, rgba(216, 208, 192, 0.09), transparent 70%),
+    radial-gradient(30% 50% at 55% 60%, rgba(216, 208, 192, 0.07), transparent 70%),
+    radial-gradient(35% 50% at 85% 45%, rgba(216, 208, 192, 0.08), transparent 70%);
+  animation: got-mist 70s linear infinite;
+}
+
+.got-mist-slow {
+  animation-duration: 110s;
+  animation-direction: reverse;
+}
+
+@keyframes got-mist {
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.got-draw,
+.got-draw-all path {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: got-draw 1.1s cubic-bezier(0.6, 0, 0.3, 1) forwards;
+}
+
+.got-draw-all path:nth-child(2) {
+  animation-delay: 0.15s;
+}
+
+.got-draw-all path:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.got-draw-all path:nth-child(4),
+.got-draw-all path:nth-child(5) {
+  animation-delay: 0.5s;
+}
+
+@keyframes got-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.got-write,
+.got-write-v {
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  animation: got-write 1.1s cubic-bezier(0.5, 0, 0.3, 1) both;
+}
+
+.got-write {
+  -webkit-mask-image: linear-gradient(90deg, #000 40%, transparent 60%);
+  mask-image: linear-gradient(90deg, #000 40%, transparent 60%);
+  -webkit-mask-size: 250% 100%;
+  mask-size: 250% 100%;
+}
+
+.got-write-v {
+  -webkit-mask-image: linear-gradient(180deg, #000 40%, transparent 60%);
+  mask-image: linear-gradient(180deg, #000 40%, transparent 60%);
+  -webkit-mask-size: 100% 250%;
+  mask-size: 100% 250%;
+  animation-name: got-write-v;
+}
+
+@keyframes got-write {
+  from {
+    -webkit-mask-position: 100% 0;
+    mask-position: 100% 0;
+  }
+  to {
+    -webkit-mask-position: 0 0;
+    mask-position: 0 0;
+  }
+}
+
+@keyframes got-write-v {
+  from {
+    -webkit-mask-position: 0 100%;
+    mask-position: 0 100%;
+  }
+  to {
+    -webkit-mask-position: 0 0;
+    mask-position: 0 0;
+  }
+}
+
+.got-slash {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: got-slash 0.75s cubic-bezier(0.7, 0, 0.3, 1) forwards;
+}
+
+.got-slash-red {
+  animation-delay: 0.05s;
+}
+
+@keyframes got-slash {
+  35% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 0;
+  }
+}
+
+.got-climb {
+  animation: got-climb 2.6s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+@keyframes got-climb {
+  from {
+    clip-path: inset(0 0 100% 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+.got-standoff {
+  background: radial-gradient(circle, rgba(200, 16, 46, 0.12), transparent 70%);
+  color: #1b1714;
+  touch-action: none;
+  transition: transform 0.4s cubic-bezier(0.3, 0.6, 0.2, 1), color 0.2s;
+}
+
+.got-standoff[data-phase="tension"] {
+  transform: scale(0.94);
+}
+
+.got-standoff[data-phase="glint"] {
+  transform: scale(1.04);
+  color: var(--got-red);
+}
+
+.got-standoff[data-phase="early"] {
+  animation: got-shake 0.4s ease;
+}
+
+.got-tension {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+}
+
+.got-standoff[data-phase="tension"] .got-tension {
+  animation: got-draw 1.1s linear forwards;
+}
+
+.got-standoff[data-phase="glint"] .got-tension,
+.got-standoff[data-phase="struck"] .got-tension {
+  stroke-dashoffset: 0;
+}
+
+.got-glint {
+  opacity: 0;
+}
+
+.got-standoff[data-phase="glint"] .got-glint {
+  animation: got-glint 0.6s ease-out both;
+}
+
+@keyframes got-glint {
+  0% {
+    opacity: 0;
+    transform: scale(0.3) rotate(-30deg);
+  }
+  40% {
+    opacity: 1;
+    transform: scale(1.5) rotate(10deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0);
+  }
+}
+
+@keyframes got-shake {
+  25% {
+    translate: -4px 0;
+  }
+  50% {
+    translate: 4px 0;
+  }
+  75% {
+    translate: -2px 0;
+  }
+}
+
+.got-letter label,
+.got-letter > p {
+  transition: opacity 0.6s ease;
+}
+
+.got-letter[data-standoff="tension"] label,
+.got-letter[data-standoff="glint"] label,
+.got-letter[data-standoff="tension"] > p,
+.got-letter[data-standoff="glint"] > p {
+  opacity: 0.4;
+}
+
+@supports (animation-timeline: view()) {
+  .got-reveal {
+    animation: got-ink-in linear both;
+    animation-timeline: view();
+    animation-range: entry 0% cover 30%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .got-rise,
+  .got-fade,
+  .got-drift,
+  .got-stamp,
+  .got-ink-in,
+  .got-mist,
+  .got-draw,
+  .got-draw-all path,
+  .got-write,
+  .got-write-v,
+  .got-slash,
+  .got-climb,
+  .got-reveal,
+  .got-standoff,
+  .got-standoff .got-tension {
+    animation: none;
+  }
+
+  .got-draw,
+  .got-draw-all path {
+    stroke-dashoffset: 0;
+  }
+
+  .got-slash {
+    display: none;
+  }
+
+  .got-unroll {
+    transition: none;
+  }
+
+  .got-item,
+  .got-item::before {
+    transition: none;
+  }
+}

@@ -31,7 +31,7 @@ export function WritingSection() {
             </a>
           </div>
           <figure className="relative aspect-4/3 overflow-hidden border-2 border-[#1b1712] bg-[#e4d7b9]">
-            <Image src={lead.image} alt="" fill sizes="420px" className="object-cover mix-blend-multiply filter-[grayscale(1)_contrast(1.5)_brightness(1.05)]" />
+            <Image src={lead.image} loading="eager" alt="" fill sizes="420px" className="object-cover mix-blend-multiply filter-[grayscale(1)_contrast(1.5)_brightness(1.05)]" />
             <div className="absolute inset-0 bg-[radial-gradient(rgba(27,23,18,0.45)_0.9px,transparent_1.2px)] bg-size-[3px_3px] mix-blend-multiply" />
           </figure>
         </section>
@@ -41,7 +41,7 @@ export function WritingSection() {
         {rest.map((post) => (
           <div key={post.title} className="grid grid-cols-[140px_1fr] gap-5">
             <figure className="relative aspect-square overflow-hidden border-2 border-[#1b1712] bg-[#e4d7b9]">
-              <Image src={post.image} alt="" fill sizes="140px" className="object-cover mix-blend-multiply filter-[grayscale(1)_contrast(1.5)]" />
+              <Image src={post.image} loading="eager" alt="" fill sizes="140px" className="object-cover mix-blend-multiply filter-[grayscale(1)_contrast(1.5)]" />
               <div className="absolute inset-0 bg-[radial-gradient(rgba(27,23,18,0.45)_0.9px,transparent_1.2px)] bg-size-[3px_3px] mix-blend-multiply" />
             </figure>
             <div>

@@ -33,7 +33,6 @@ async function paper() {
 }
 
 const screens = {
-  "title-night": "RDR2_PC_21-4200-1080.jpg",
   "oak-riders": "RDR2_PC_22-4201-1080.jpg",
   "misty-oak": "RDR2_PC_10-4169-1080.jpg",
   "trestle": "RDR2_PC_24-4203-1080.jpg",
@@ -41,7 +40,6 @@ const screens = {
   "canyon": "RDR2_PC_12-4172-1080.jpg",
   "night-lake": "RDR2_PC_04-4143-1080.jpg",
   "golden-field": "RDR2_PC_01-4140-1080.jpg",
-  "swamp": "RDR2_PC_14-4191-1080.jpg",
   "snow-camp": "RDR2_PC_26-4205-1080.jpg",
 }
 

@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from "react"
 
-import { SoundProvider } from "@/components/sound/sound-provider"
-import { rdr2Sounds } from "./sounds"
+import { MusicProvider } from "@/components/music/music-provider"
+import { rdr2Music } from "./music"
 import "./rdr2.css"
 import { Credits } from "./credits"
 import { Loader } from "./loader"
@@ -39,8 +39,8 @@ function Frontier() {
 
 export default function FrontierApp() {
   return (
-    <SoundProvider kit={rdr2Sounds}>
+    <MusicProvider playlist={rdr2Music} accent="#b8121b" dock="bottom-4 right-4 lg:bottom-16">
       <Frontier />
-    </SoundProvider>
+    </MusicProvider>
   )
 }
