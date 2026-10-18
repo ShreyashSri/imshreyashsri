@@ -5,14 +5,14 @@ import { blogPosts } from "@/data/blog-posts"
 export function WritingSection() {
   const [lead, ...rest] = blogPosts
   return (
-    <article className="journal-paper mx-auto max-w-[980px] px-6 pb-10 pt-7 text-[#1b1712] filter-[grayscale(.35)] sm:px-12">
+    <article className="journal-paper torn mx-auto max-w-[980px] px-6 pb-10 pt-7 text-[#1b1712] filter-[grayscale(.35)] sm:px-12">
       <header className="text-center">
         <div className="flex items-center justify-between border-b border-[#1b1712] pb-1 font-sans text-[10px] font-bold uppercase tracking-[0.18em]">
           <span>Vol. II</span>
-          <span>Bangalore, Karnataka</span>
+          <span>Saint Denis, Lemoyne</span>
           <span>Price 5 cents</span>
         </div>
-        <h2 className="mt-2 font-blackletter text-[clamp(2.6rem,8vw,5.2rem)] leading-none">The Bangalore Ledger</h2>
+        <h2 className="mt-2 font-blackletter text-[clamp(2.6rem,8vw,5.2rem)] leading-none">The Saint Denis Times</h2>
         <div className="mt-2 border-y-[3px] border-double border-[#1b1712] py-1 font-sans text-[10.5px] font-bold uppercase tracking-[0.2em]">
           Written by Shreyash Srivastava · Published on Medium
         </div>

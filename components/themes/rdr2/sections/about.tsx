@@ -4,28 +4,30 @@ import { education, profile, tally } from "@/data/resume"
 
 function SelfPoster() {
   return (
-    <figure className="relative mx-auto w-full max-w-[280px] rotate-[-1.5deg] bg-[#d9c39a] px-5 pb-5 pt-5 text-[#1d1813] shadow-[0_10px_24px_rgba(60,40,15,0.35)]">
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0"
-        style={{ background: "radial-gradient(120% 90% at 50% 45%, transparent 55%, rgba(120,78,30,0.4) 100%)" }}
-      />
-      <span aria-hidden="true" className="absolute left-1/2 top-1.5 h-3 w-3 -translate-x-1/2 rounded-full bg-[radial-gradient(circle_at_35%_35%,#8d8d8d,#2f2f2f_65%)] shadow-[0_2px_2px_rgba(0,0,0,0.6)]" />
-      <p className="relative text-center font-redemption text-[48px] leading-[0.88]">WANTED</p>
-      <p className="relative mt-1 text-center font-rocks text-[15px] uppercase tracking-widest">For backend work</p>
-      <div className="relative mx-auto mt-3 aspect-4/5 w-[86%] overflow-hidden border-[3px] border-[#1d1813] bg-[#cbb48a]">
-        <Image
-          src="/images/profile/shrey.jpeg"
-          alt="Photograph of Shreyash Srivastava"
-          fill
-          sizes="240px"
-          priority
-          className="object-cover object-top filter-[grayscale(1)_sepia(0.65)_contrast(1.08)_brightness(1.02)]"
+    <div className="mx-auto w-full max-w-[280px] rotate-[-1.5deg] drop-shadow-[0_10px_14px_rgba(60,40,15,0.4)]">
+      <figure className="torn relative bg-[#d9c39a] px-5 pb-5 pt-5 text-[#1d1813]">
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0"
+          style={{ background: "radial-gradient(120% 90% at 50% 45%, transparent 55%, rgba(120,78,30,0.4) 100%)" }}
         />
-        <div className="absolute inset-0 shadow-[inset_0_0_36px_rgba(60,35,10,0.6)]" />
-      </div>
-      <figcaption className="relative mt-3 text-center font-kirsty text-[24px] font-bold uppercase leading-none">{profile.name}</figcaption>
-    </figure>
+        <span aria-hidden="true" className="absolute left-1/2 top-1.5 h-3 w-3 -translate-x-1/2 rounded-full bg-[radial-gradient(circle_at_35%_35%,#8d8d8d,#2f2f2f_65%)] shadow-[0_2px_2px_rgba(0,0,0,0.6)]" />
+        <p className="relative text-center font-redemption text-[48px] leading-[0.88]">WANTED</p>
+        <p className="relative mt-1 text-center font-rocks text-[15px] uppercase tracking-widest">For backend work</p>
+        <div className="relative mx-auto mt-3 aspect-4/5 w-[86%] overflow-hidden border-[3px] border-[#1d1813] bg-[#cbb48a]">
+          <Image
+            src="/images/profile/shrey.jpeg"
+            alt="Photograph of Shreyash Srivastava"
+            fill
+            sizes="240px"
+            priority
+            className="object-cover object-top filter-[grayscale(1)_sepia(0.65)_contrast(1.08)_brightness(1.02)]"
+          />
+          <div className="absolute inset-0 shadow-[inset_0_0_36px_rgba(60,35,10,0.6)]" />
+        </div>
+        <figcaption className="relative mt-3 text-center font-kirsty text-[24px] font-bold uppercase leading-none">{profile.name}</figcaption>
+      </figure>
+    </div>
   )
 }
 

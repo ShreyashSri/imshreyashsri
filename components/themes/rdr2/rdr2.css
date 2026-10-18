@@ -53,3 +53,85 @@
   letter-spacing: 0.01em;
   -webkit-text-stroke: 0.5px currentColor;
 }
+
+.pv-scene {
+  transform: perspective(1400px) rotateY(calc(var(--mx, 0) * 7deg)) rotateX(calc(var(--my, 0) * -5deg));
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.pv-light {
+  width: 560px;
+  height: 560px;
+  translate: calc(var(--px, 0px) - 280px) calc(var(--py, 0px) - 280px);
+  background: radial-gradient(circle, rgba(255, 214, 150, 0.16), transparent 62%);
+  will-change: translate;
+  transition: opacity 0.4s;
+}
+
+.pv-layer {
+  translate: calc(var(--mx, 0) * var(--depth, 1) * 14px) calc(var(--my, 0) * var(--depth, 1) * 10px);
+  will-change: translate;
+  transition: rotate 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), scale 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), left 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.pv-lift:hover {
+  rotate: calc(var(--r, 0deg) * -1);
+  scale: 1.07;
+  z-index: 30 !important;
+}
+
+.group:hover .pv-solo {
+  rotate: calc(var(--r, 0deg) * -1);
+  scale: 1.03;
+}
+
+.pv-dim::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #000;
+  opacity: calc(1 - var(--dim, 1));
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+
+.pv-dim:hover::after {
+  opacity: 0;
+}
+
+.pv-fan {
+  left: calc(var(--center) + var(--offset) * var(--gap, 115px));
+}
+
+.group:hover .pv-fan {
+  --gap: 140px;
+}
+
+.pv-medal {
+  transition: rotate 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.pv-medal-row:hover .pv-medal {
+  rotate: y 360deg;
+}
+
+.pv-icon {
+  transition: scale 0.25s, background-color 0.25s, border-color 0.25s, box-shadow 0.25s;
+}
+
+.pv-icon:hover {
+  scale: 1.12;
+  background-color: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.7);
+  box-shadow: 0 0 24px rgba(255, 214, 150, 0.25);
+}
+
+.pv-stamp {
+  transition: scale 0.2s cubic-bezier(0.3, 1.6, 0.5, 1), rotate 0.2s;
+}
+
+.pv-stamp:hover {
+  scale: 1.18;
+  rotate: -6deg;
+}

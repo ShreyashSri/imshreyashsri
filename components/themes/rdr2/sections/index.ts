@@ -13,7 +13,7 @@ export const sections = [
   { id: "projects", label: "Bounties", blurb: "Six projects at large. Demos and source on every poster.", backdrop: "canyon", Content: ProjectsSection },
   { id: "skills", label: "Satchel", blurb: "The languages, frameworks and tools I carry on every job.", backdrop: "night-lake", Content: SkillsSection },
   { id: "open-source", label: "Camp", blurb: "Open-source work in the camp ledger, and the awards won.", backdrop: "snow-camp", Content: OpenSourceSection },
-  { id: "writing", label: "Newspapers", blurb: "Articles I've written, printed in The Bangalore Ledger.", backdrop: "wagon-fog", Content: WritingSection },
+  { id: "writing", label: "Newspapers", blurb: "Articles I've written, printed in The Saint Denis Times.", backdrop: "wagon-fog", Content: WritingSection },
   { id: "contact", label: "Telegram", blurb: "Send word about a role, a project or a collaboration.", backdrop: "golden-field", Content: ContactSection },
   { id: "games", label: "Games", blurb: "Games I love. Pick one and the whole portfolio changes to match.", backdrop: "oak-riders", Content: GamesSection },
 ] as const satisfies readonly { id: string; label: string; blurb: string; backdrop: string; Content: () => React.ReactNode }[]
