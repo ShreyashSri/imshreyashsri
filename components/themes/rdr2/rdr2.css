@@ -1,0 +1,55 @@
+@reference "../../../app/globals.css";
+
+.theme-rdr2 {
+  --ink: #141414;
+  --blood: #691108;
+  color: var(--ink);
+}
+
+.theme-rdr2 ::selection {
+  background: rgba(105, 17, 8, 0.25);
+}
+
+.theme-rdr2 :focus-visible {
+  outline: 2px solid var(--blood);
+  outline-offset: 2px;
+}
+
+.theme-rdr2 [data-menu] :focus-visible {
+  outline-color: rgba(255, 255, 255, 0.85);
+}
+
+.journal-paper {
+  position: relative;
+  color: #2b2620;
+  background-color: #d6ccb2;
+  background-image: radial-gradient(130% 95% at 50% 45%, transparent 66%, rgba(96, 68, 32, 0.22) 100%),
+    url("/themes/rdr2/textures/journal.jpg");
+  background-size: 100% 100%, 1400px 1400px;
+  box-shadow: inset 0 0 36px rgba(110, 80, 40, 0.2), 0 30px 60px rgba(0, 0, 0, 0.55);
+}
+
+.torn {
+  -webkit-mask: url("/themes/rdr2/textures/torn-edge.svg") center / 100% 100% no-repeat;
+  mask: url("/themes/rdr2/textures/torn-edge.svg") center / 100% 100% no-repeat;
+}
+
+.btn-rdr {
+  @apply inline-flex items-center justify-center border border-ink px-3 py-1.5 font-sans text-sm uppercase text-ink transition-colors;
+}
+
+.btn-rdr:hover,
+.btn-rdr:focus-visible {
+  background: rgba(105, 17, 8, 0.1);
+}
+
+.keycap {
+  @apply inline-flex h-7 min-w-7 items-center justify-center rounded-full border-2 border-bone/90 px-1.5 font-sans text-[11px] font-bold uppercase leading-none text-bone;
+}
+
+/* The handwriting font has hairline strokes; a same-colour stroke makes it readable. */
+.font-hand {
+  word-spacing: 0.22em;
+  letter-spacing: 0.01em;
+  -webkit-text-stroke: 0.5px currentColor;
+}

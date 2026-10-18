@@ -8,17 +8,25 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    title: "Production Was Down",
+    excerpt:
+      "What happened after I shipped a credit system to cap AI usage at an ed-tech startup, and the lessons from the day production went down.",
+    image: "/images/blog/production-was-down.webp",
+    date: "October 18, 2026",
+    url: "https://medium.com/@ShreyashSri/bad-things-might-happen-if-you-ignore-this-143f6ba3e210",
+  },
+  {
     title: "Swagger: What's That?",
     excerpt: "Learn about Swagger documentation and its importance in API development.",
-    image: "/images/swagger.webp",
+    image: "/images/blog/swagger.webp",
     date: "March 18, 2025",
     url: "https://medium.com/@ShreyashSri/swagger-whats-that-2377ba6d8e17",
   },
   {
     title: "My Experience Participating in KWoC",
     excerpt: "A reflection on my journey participating in Kharagpur Winter of Code.",
-    image: "/images/kwoc.webp",
+    image: "/images/blog/kwoc.webp",
     date: "January 18, 2025",
     url: "https://medium.com/@ShreyashSri/my-experience-participating-in-kwoc-b87d197d4728",
   },
-] 
+]
